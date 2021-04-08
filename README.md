@@ -1,5 +1,8 @@
 # Front end code for final project for CS 4800 Spring 2020 Team Legumes LTE
 
+## Link to our middleware repository:
+https://github.com/seaungst/CS-4800-Legumes-LTE
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
