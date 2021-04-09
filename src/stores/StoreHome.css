@@ -45,21 +45,6 @@ td {
   padding-left: 0px;
 }
 
-.btn {
-  margin-left: 10px;
-  background-color: #f0f3fe;
-  color: #33559b;
-}
-
-.btn:hover {
-  background-color: #abbcf7;
-}
-
-.btn:active {
-  background-color: #86a3f4;
-  color: #f0f3fe;
-}
-
 .column {
   float: left;
 }
