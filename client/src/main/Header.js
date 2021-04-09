@@ -1,5 +1,6 @@
 import React from "react";
 import "./Header.css";
+import menu from "./menu_icon.png";
 import { Link } from "react-router-dom";
 
 function Header() {
@@ -7,23 +8,41 @@ function Header() {
     <div id="header_page">
       <nav class="navbar navbar-expand-md navbar-custom fixed-top">
         <a class="navbar-brand" href="#">
-          <h3>Chickpea</h3>
+          <Link to="home" class="nav-link">
+            <h3>Chickpea</h3>
+          </Link>
         </a>
 
         <button
           class="navbar-toggler"
+          id="menu-icon-button"
           type="button"
           data-toggle="collapse"
           data-target="#collapsibleNavbar"
         >
-          <span class="navbar-toggler-icon"></span>
+          <img id="menu-icon" src={menu}></img>
         </button>
 
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <Link to="storepage">
-                <p class="nav-link">Stores</p>
+              <Link to="storehome" class="nav-link">
+                <p>Stores/Home</p>
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link to="storepage" class="nav-link">
+                <p>Stores/Page</p>
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link to="signup" class="nav-link">
+                <p>SignUp</p>
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link to="signin" class="nav-link">
+                <p>SignIn</p>
               </Link>
             </li>
             <li class="nav-item">

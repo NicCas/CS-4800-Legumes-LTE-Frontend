@@ -1,15 +1,17 @@
-body {
+#store-home {
   background-color: var(--purple1);
   width: 100%;
   position: relative;
+  top: 90px;
 }
 
 #header {
-  background-color: var(--purple2);
+  background-color: var(--yellow2);
   padding: 20px;
-  color: var(--purple5);
+  color: var(--yellow5);
   padding-left: 40px;
   width: 100%;
+  position: relative;
 }
 
 #import {

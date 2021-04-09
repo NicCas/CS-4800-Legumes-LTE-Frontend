@@ -22,6 +22,7 @@ function SignUp() {
           <input type="submit" value="Submit"></input>
         </form>
       </div>
+      <div id="extra-space-small"></div>
     </div>
   );
 }

@@ -2,6 +2,7 @@
   background-color: var(--purple1);
   width: 100%;
   position: relative;
+  top: 50px;
 }
 
 ul.nav-pills {
@@ -126,8 +127,4 @@ div.col-sm-9 div {
 .card {
   margin: 10px !important;
   padding: 10px !important;
-}
-
-#extra-space {
-  height: 750px;
 }

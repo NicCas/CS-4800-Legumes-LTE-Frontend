@@ -14,6 +14,8 @@ function StorePage() {
         <div class="row">
           <nav class="col-sm-3 col-4" id="myScrollspy">
             <ul class="nav nav-pills flex-column" id="test-pills">
+              <h1></h1>
+              <h1></h1>
               <h2>Store Name</h2>
 
               <div class="rating">

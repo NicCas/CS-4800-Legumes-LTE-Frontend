@@ -16,3 +16,11 @@ body {
   background: var(--purple1);
   color: var(--purple6);
 }
+
+#extra-space {
+  height: 750px;
+}
+
+#extra-space-small {
+  height: 400px;
+}
