@@ -24,3 +24,17 @@ body {
 #extra-space-small {
   height: 400px;
 }
+
+.btn {
+  background-color: var(--yellow1);
+  color: var(--yellow5);
+}
+
+.btn:hover {
+  background-color: var(--yellow2);
+}
+
+.btn:active {
+  background-color: var(--yellow3);
+  color: var(--yellow1);
+}
