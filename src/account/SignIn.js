@@ -13,7 +13,7 @@ function SignIn() {
           <label for="pw">Password:</label>
           <input type="password" id="pw" name="pw"></input>
           <br />
-          <input type="submit" value="Submit"></input>
+          <input class="btn" type="submit" value="Submit"></input>
         </form>
       </div>
       <div id="extra-space-small"></div>
