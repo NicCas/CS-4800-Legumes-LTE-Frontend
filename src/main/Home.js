@@ -9,6 +9,7 @@ function Home() {
       <p>Our site is currently under construction, please check back later!</p>
       <div id="extra-space"></div>
     </div>
+    
   );
 }
 

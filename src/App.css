@@ -17,14 +17,6 @@ body {
   color: var(--purple6);
 }
 
-#extra-space {
-  height: 750px;
-}
-
-#extra-space-small {
-  height: 400px;
-}
-
 .btn {
   background-color: var(--yellow1);
   color: var(--yellow5);
@@ -37,4 +29,12 @@ body {
 .btn:active {
   background-color: var(--yellow3);
   color: var(--yellow1);
+}
+
+#extra-space {
+  height: 750px;
+}
+
+#extra-space-small {
+  height: 400px;
 }

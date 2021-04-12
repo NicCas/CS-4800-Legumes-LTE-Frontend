@@ -19,7 +19,7 @@ function SignUp() {
           <label for="email">Email:</label>
           <input type="text" id="email" name="email"></input>
           <br />
-          <input type="submit" value="Submit"></input>
+          <input class="btn" type="submit" value="Submit"></input>
         </form>
       </div>
       <div id="extra-space-small"></div>
