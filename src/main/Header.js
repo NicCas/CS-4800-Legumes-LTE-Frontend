@@ -1,6 +1,11 @@
 import React from "react";
 import "./Header.css";
-import menu from "./menu_icon.png";
+import menu from "../assets/menu_icon.png";
+import stores from "../assets/stores.png";
+import profile from "../assets/profile.png";
+import logo from "../assets/logo.png";
+import basket from "../assets/handbasket.png";
+import search from "../assets/search.png";
 import { Link } from "react-router-dom";
 
 function Header() {
@@ -9,7 +14,10 @@ function Header() {
       <nav class="navbar navbar-expand-md navbar-custom fixed-top">
         <a class="navbar-brand" href="#">
           <Link to="home" class="nav-link">
-            <h3>Chickpea</h3>
+            <div id="logo-wrapper">
+              <img src={logo} id="logo-image"></img>
+              <h3 class="title">Chickpea</h3>
+            </div>
           </Link>
         </a>
 
@@ -27,34 +35,33 @@ function Header() {
           <ul class="navbar-nav">
             <li class="nav-item">
               <Link to="storehome" class="nav-link">
-                <p>Stores/Home</p>
+                <div class="header-wrapper">
+                  <img src={stores} class="header-image"></img>
+                  <b>Stores Home</b>
+                </div>
               </Link>
             </li>
             <li class="nav-item">
               <Link to="storepage" class="nav-link">
-                <p>Stores/Page</p>
-              </Link>
-            </li>
-            <li class="nav-item">
-              <Link to="signup" class="nav-link">
-                <p>SignUp</p>
+                <div class="header-wrapper">
+                  <img src={stores} class="header-image"></img>
+                  <b>Stores Page</b>
+                </div>
               </Link>
             </li>
             <li class="nav-item">
               <Link to="signin" class="nav-link">
-                <p>SignIn</p>
+                <div class="header-wrapper">
+                  <img src={profile} class="header-image"></img>
+                  <b>Account</b>
+                </div>
               </Link>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Profile
-              </a>
-            </li>
           </ul>
-        </div>
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+
           <ul class="navbar-nav ml-auto">
             <form class="form-inline" action="#">
+              <img src={search} class="header-image"></img>
               <input
                 class="form-control mr-sm-2"
                 type="text"
@@ -64,10 +71,12 @@ function Header() {
                 Search
               </button>
             </form>
-
             <li class="nav-item">
               <a class="nav-link" href="#">
-                HandBasket
+                <div class="header-wrapper">
+                  <img src={basket} class="header-image"></img>
+                  <b>Handbasket</b>
+                </div>
               </a>
             </li>
           </ul>

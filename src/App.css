@@ -31,6 +31,15 @@ body {
   color: var(--yellow1);
 }
 
+a {
+  color: var(--purple5);
+}
+
+a:hover {
+  color: var(--purple4);
+  text-decoration: none;
+}
+
 #extra-space {
   height: 750px;
 }

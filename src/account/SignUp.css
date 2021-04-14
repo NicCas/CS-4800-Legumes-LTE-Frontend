@@ -1,5 +1,50 @@
 #sign-up-page {
   position: relative;
-  padding: 20px;
+  padding: 100px 20px;
   top: 100px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+#sign-up-card {
+  width: 400px;
+  height: 325px;
+  margin: auto;
+  background-color: var(--purple2);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border: solid 3px var(--purple4);
+  border-radius: 10px;
+}
+
+#sign-up-form label {
+  font-size: 20px;
+  color: var(--purple5);
+}
+
+#sign-up-title {
+  color: var(--purple5);
+}
+
+#sign-up-button {
+  margin: 10px 0px;
+  width: 300px;
+}
+
+input[type="text"],
+input[type="password"] {
+  border: 2px solid var(--purple4);
+  border-radius: 5px;
+  color: var(--purple6);
+}
+
+.image-wrapper {
+  width: 100%;
+}
+
+.image {
+  width: 25px;
 }

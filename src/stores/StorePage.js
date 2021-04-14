@@ -1,6 +1,6 @@
 import React from "react";
 import "./StorePage.css";
-import backsplash from "./backsplash_placeholder.png";
+import backsplash from "../assets/backsplash_placeholder.png";
 //import item from "./item_placeholder.png";
 
 function StorePage() {

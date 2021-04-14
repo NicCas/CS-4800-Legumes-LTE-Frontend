@@ -1,0 +1,2 @@
+(this.webpackJsonpclient=this.webpackJsonpclient||[]).push([[7],{33:function(e,c,t){},43:function(e,c,t){"use strict";t.r(c);t(0),t(33);var i=t(1);c.default=function(){return Object(i.jsxs)("div",{id:"home-page",children:[Object(i.jsx)("h1",{children:"Chickpea"}),Object(i.jsx)("p",{children:"Welcome to Chickpea!"}),Object(i.jsx)("p",{children:"Our site is currently under construction, please check back later!"}),Object(i.jsx)("div",{id:"extra-space"})]})}}}]);
+//# sourceMappingURL=7.f420529f.chunk.js.map

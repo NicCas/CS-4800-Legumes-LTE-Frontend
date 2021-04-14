@@ -1,11 +1,15 @@
 #footer-page {
   position: relative;
   z-index: 100 !important;
-  background-color: var(--yellow1);
-  padding: 20px;
-  color: var(--purple4);
-  bottom: 0;
+  display: inline-block;
+}
+
+#logo-wrapper {
   width: 100%;
-  margin: 0px;
-  text-align: center;
+  display: inline-block;
+}
+
+#logo-img-footer {
+  width: 40px;
+  display: inline-block;
 }

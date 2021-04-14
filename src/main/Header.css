@@ -13,7 +13,7 @@
 }
 
 .navbar-custom a:hover {
-  color: var(--purple);
+  color: var(--purple4);
 }
 
 #menu-icon-button {
@@ -23,4 +23,28 @@
 
 #menu-icon {
   width: 25px;
+}
+
+#logo-wrapper {
+  width: 100%;
+}
+
+#logo-image {
+  width: 40px;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.header-wrapper {
+  width: 100%;
+}
+
+.header-image {
+  width: 25px;
+  display: inline-block !important;
+  margin-right: 10px;
+}
+
+.title {
+  display: inline-block !important;
 }

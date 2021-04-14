@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/account/SignUp.css"],"names":[],"mappings":"AAAA,cACE,iBAAkB,CAClB,YAAa,CACb,SACF","file":"6.49941e58.chunk.css","sourcesContent":["#sign-up-page {\n  position: relative;\n  padding: 20px;\n  top: 100px;\n}\n"]}

@@ -1,6 +1,6 @@
 import React from "react";
 import "./StoreHome.css";
-import owner from "./owner_placeholder.png";
+import owner from "../assets/owner_placeholder.png";
 
 function StoreHome() {
   return (
