@@ -1,10 +1,11 @@
 #sign-in-page {
   position: relative;
   padding: 100px 20px;
-  top: 100px;
+  top: 80px;
   justify-content: center;
   align-items: center;
   margin-bottom: 80px;
+  background-image: linear-gradient(var(--purple3), var(--purple1));
 }
 
 #sign-in-card {
@@ -16,6 +17,7 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
+  margin-top: 20px;
   border: solid 3px var(--purple4);
   border-radius: 10px;
 }
