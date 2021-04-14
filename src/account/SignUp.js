@@ -67,8 +67,6 @@ function SignUp() {
           </p>
         </div>
       </div>
-
-      <div id="extra-space-small"></div>
     </div>
   );
 }

@@ -47,7 +47,6 @@ function StoreHome() {
             <input type="hidden" name="store_id" />
           </button>
         </form>
-        <div id="extra-space-small"></div>
       </div>
     </div>
   );
