@@ -5,6 +5,7 @@ import password from "../assets/password.png";
 import { Link } from "react-router-dom";
 
 import axios from "axios";
+axios.defaults.withCredentials = true;
 
 export default class SignIn extends React.Component {
   constructor(props) {
@@ -37,8 +38,7 @@ export default class SignIn extends React.Component {
       data: {
         username : this.state.username,
         password : this.state.password
-      },
-      withCredentials: true
+      }
     })
     .then(function(response) {
       console.log(response.data);
