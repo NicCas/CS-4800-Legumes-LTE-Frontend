@@ -1,5 +1,14 @@
 import React from "react";
 import "./Home.css";
+import axios from "axios";
+
+//axios for testing purposes, good luck luis!
+axios
+  .get("https://jsonplaceholder.typicode.com/todos?_limit=5", {
+    timeout: 5000,
+  })
+  .then((res) => showOutput(res))
+  .catch((err) => console.error(err));
 
 function Home() {
   return (
@@ -9,7 +18,6 @@ function Home() {
       <p>Our site is currently under construction, please check back later!</p>
       <div id="extra-space"></div>
     </div>
-    
   );
 }
 
