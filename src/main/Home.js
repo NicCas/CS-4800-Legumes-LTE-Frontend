@@ -16,6 +16,8 @@ function Home() {
       <h1>Chickpea</h1>
       <p>Welcome to Chickpea!</p>
       <p>Our site is currently under construction, please check back later!</p>
+
+      <div id="testimonials"></div>
       <div id="extra-space"></div>
     </div>
   );
