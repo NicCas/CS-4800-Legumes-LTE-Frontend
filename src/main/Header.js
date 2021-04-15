@@ -72,12 +72,12 @@ function Header() {
               </button>
             </form>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <Link to="handbasket" class="nav-link">
                 <div class="header-wrapper">
                   <img src={basket} class="header-image"></img>
                   <b>Handbasket</b>
                 </div>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
