@@ -2,13 +2,6 @@ import React from "react";
 import "./StorePage.css";
 import axios from "axios";
 import backsplash from "../assets/backsplash_placeholder.png";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams
-} from "react-router-dom";
 import { lazy } from "react";
 //import item from "./item_placeholder.png";
 import item from "../assets/item_placeholder.png";
@@ -27,15 +20,13 @@ export default class StorePage extends React.Component {
 
   componentDidMount() {
     // axios request will go in here
-    axios("https://chickpeaapi.glitch.me/stores", {
-      method: "post",
+    axios.post("https://chickpeaapi.glitch.me/stores/detail", {
       data: {
-        item: this.state.item
+        store_id: this.props.match.params
       }
     }).then(function(response) {
       console.log(response.data);
     });
-    event.preventDefault();
     // grabbing url parameter /:store_id
     //console.log(this.props.match.params);
   }
@@ -43,6 +34,7 @@ export default class StorePage extends React.Component {
   render() {
     return (
       <div id="store-page">
+        <Header />
         <div>
           <img src={backsplash} id="backsplash"></img>
         </div>
@@ -102,6 +94,7 @@ export default class StorePage extends React.Component {
             <div id="extra-space"></div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
