@@ -1,8 +1,5 @@
 #footer-page {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+  position: relative;
   z-index: 100 !important;
   display: inline-block;
 }

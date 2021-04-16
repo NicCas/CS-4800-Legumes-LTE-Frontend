@@ -22,11 +22,7 @@ function App() {
               <StoreHome />
               <Footer />
             </Route>
-            <Route path="/storepage">
-              <Header />
-              <StorePage />
-              <Footer />
-            </Route>
+            <Route path="/storepage/:store_id" component={StorePage}/>
             <Route path="/signin">
               <Header />
               <SignIn />

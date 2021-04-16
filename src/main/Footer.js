@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <div id="footer-page">
-      <div>
+      <div className="fixed-bottom">
         <Navbar
           style={{
             backgroundColor: "#f8eac9",
