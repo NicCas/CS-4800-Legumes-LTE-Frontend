@@ -1,6 +1,7 @@
 import React from "react";
 import "./StoreHome.css";
 import owner from "../assets/owner_placeholder.png";
+import { Link } from "react-router-dom";
 
 function StoreHome() {
   return (
@@ -11,7 +12,7 @@ function StoreHome() {
         stores!
       </div>
       <div class="list-group">
-        <form action="/stores/detail" method="post">
+        <Link to="storepage/1" class="nav-link">
           <button
             type="submit"
             class="list-group-item list-group-item-action"
@@ -43,10 +44,8 @@ function StoreHome() {
                 </t>
               </div>
             </div>
-
-            <input type="hidden" name="store_id" />
           </button>
-        </form>
+        </Link>
       </div>
     </div>
   );
