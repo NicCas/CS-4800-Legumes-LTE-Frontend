@@ -12,20 +12,26 @@ export default class StorePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      item: ""
+      items: {},
+      store: {}
     };
 
     this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   componentDidMount() {
+    let currentComponent = this;
     // axios request will go in here
-    axios.post("https://chickpeaapi.glitch.me/stores/detail", {
+    axios("https://chickpeaapi.glitch.me/stores/detail", {
+      method: "post",
       data: {
-        store_id: this.props.match.params
+        store_id: currentComponent.props.match.params.store_id
       }
     }).then(function(response) {
-      console.log(response.data);
+      const store_data = response.data.store;
+      const item_list = response.data.items;
+      currentComponent.setState({items: item_list,
+                    store: store_data});
     });
     // grabbing url parameter /:store_id
     //console.log(this.props.match.params);
@@ -45,7 +51,7 @@ export default class StorePage extends React.Component {
               <ul class="nav nav-pills flex-column" id="test-pills">
                 <h1></h1>
                 <h1></h1>
-                <h2>Store Name</h2>
+                <h2>{this.state.store.Store_Name}</h2>
 
                 <div class="rating">
                   <input type="radio" name="rating" value="5" id="5"></input>
@@ -61,11 +67,11 @@ export default class StorePage extends React.Component {
                 </div>
 
                 <p>
-                  Street<br></br>
-                  City<br></br>
-                  State<br></br>
-                  Zipcode<br></br>
-                  Phone Number
+                  {this.state.store.Address_Street}<br></br>
+                  {this.state.store.Address_City}<br></br>
+                  {this.state.store.Address_State}<br></br>
+                  {this.state.store.Address_Zipcode}<br></br>
+                  {this.state.store.Phone_Number}
                 </p>
 
                 <h3>Categories</h3>
