@@ -26,6 +26,7 @@ function App() {
             <Route path="/storepage">
               <Header />
               <StorePage />
+              
               <Footer />
             </Route>
             <Route path="/signin">
