@@ -9,6 +9,7 @@ const StoreHome = lazy(() => import("./stores/StoreHome"));
 const StorePage = lazy(() => import("./stores/StorePage"));
 const SignIn = lazy(() => import("./account/SignIn"));
 const SignUp = lazy(() => import("./account/SignUp"));
+const Carousel = lazy(() => import("./stores/Carousel"));
 const Handbasket = lazy(() => import("./handbasket/HandbasketPage"));
 
 function App() {
@@ -35,6 +36,11 @@ function App() {
             <Route path="/signup">
               <Header />
               <SignUp />
+              <Footer />
+            </Route>
+            <Route path="/Carousel">
+              <Header />
+              <Carousel />
               <Footer />
             </Route>
             <Route path="/handbasket">

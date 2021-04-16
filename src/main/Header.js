@@ -33,6 +33,14 @@ function Header() {
 
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav">
+          <li class="nav-item">
+              <Link to="Carousel" class="nav-link">
+                <div class="header-wrapper">
+                  <img src={profile} class="header-image"></img>
+                  <b>Carousel</b>
+                </div>
+              </Link>
+            </li>
             <li class="nav-item">
               <Link to="storehome" class="nav-link">
                 <div class="header-wrapper">

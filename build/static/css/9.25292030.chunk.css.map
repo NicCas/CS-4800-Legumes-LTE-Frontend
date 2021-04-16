@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/main/Home.css"],"names":[],"mappings":"AAAA,WACE,iBAAkB,CAClB,SAAU,CACV,cACF","file":"9.25292030.chunk.css","sourcesContent":["#home-page {\n  position: relative;\n  top: 100px;\n  padding: 0px 20px 0px 20px;\n}\n"]}
