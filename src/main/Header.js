@@ -13,7 +13,7 @@ function Header() {
     <div id="header_page">
       <nav class="navbar navbar-expand-md navbar-custom fixed-top">
         <a class="navbar-brand" href="#">
-          <Link to="home" class="nav-link">
+          <Link to="/home" class="nav-link">
             <div id="logo-wrapper">
               <img src={logo} id="logo-image"></img>
               <h3 class="title">Chickpea</h3>
@@ -34,7 +34,7 @@ function Header() {
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <Link to="storehome" class="nav-link">
+              <Link to="/storehome" class="nav-link">
                 <div class="header-wrapper">
                   <img src={stores} class="header-image"></img>
                   <b>Stores Home</b>
@@ -50,7 +50,7 @@ function Header() {
               </Link>
             </li>
             <li class="nav-item">
-              <Link to="signin" class="nav-link">
+              <Link to="/signin" class="nav-link">
                 <div class="header-wrapper">
                   <img src={profile} class="header-image"></img>
                   <b>Account</b>
@@ -72,7 +72,7 @@ function Header() {
               </button>
             </form>
             <li class="nav-item">
-              <Link to="handbasket" class="nav-link">
+              <Link to="/handbasket" class="nav-link">
                 <div class="header-wrapper">
                   <img src={basket} class="header-image"></img>
                   <b>Handbasket</b>
