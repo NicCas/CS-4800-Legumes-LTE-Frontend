@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import "./StoreHome.css";
 import owner from "../assets/owner_placeholder.png";
+import { Link } from 'react-router-dom'
 //axios.defaults.withCredentials = true;
 
 export default class StoreHome extends React.Component {
@@ -34,7 +35,7 @@ export default class StoreHome extends React.Component {
         <div class="list-group">
         { this.state.stores.map(
             store =>
-            <form action="/stores/detail" method="post">
+            <Link to={"/storepage/" + store.Store_ID}>
             <button
               type="submit"
               class="list-group-item list-group-item-action"
@@ -66,7 +67,7 @@ export default class StoreHome extends React.Component {
   
               <input type="hidden" name="store_id" />
             </button>
-          </form>
+          </Link>
           ) }
           <div id="extra-space-small"></div>
         </div>
