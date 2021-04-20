@@ -36,6 +36,7 @@ ul.nav-pills {
   width: 1em;
   font-size: 25px;
   color: var(--yellow1);
+  cursor: pointer;
 }
 
 .rating > label::before {
@@ -44,8 +45,17 @@ ul.nav-pills {
   opacity: 0;
 }
 
+.rating > label:hover:before,
+.rating > label:hover ~ label:before {
+  opacity: 1 !important;
+}
+
 .rating > input:checked ~ label:before {
   opacity: 1;
+}
+
+.rating:hover > input:checked ~ label:before {
+  opacity: 0.4;
 }
 
 #backsplash {
@@ -58,6 +68,7 @@ ul.nav-pills {
   background-color: var(--purple5);
   color: var(--purple1);
   max-width: 1000px;
+  height: auto;
 }
 
 .row {
@@ -75,32 +86,9 @@ div.col-sm-9 div {
   position: relative;
   z-index: -1;
   padding-bottom: 100px;
+  height: auto;
 }
 
 #pantry {
   margin-top: 220px;
-}
-
-.card-img-top {
-  justify-content: center;
-}
-
-.card-deck {
-  margin: 0px !important;
-  padding: 0px !important;
-}
-
-.card-footer {
-  margin: 0px !important;
-  padding: 0px !important;
-}
-
-.card-body {
-  margin: 0px !important;
-  padding: 0px !important;
-}
-
-.card {
-  margin: 10px !important;
-  padding: 10px !important;
 }

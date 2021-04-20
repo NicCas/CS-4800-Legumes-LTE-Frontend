@@ -11,18 +11,32 @@ const SignIn = lazy(() => import("./account/SignIn"));
 const SignUp = lazy(() => import("./account/SignUp"));
 const Handbasket = lazy(() => import("./handbasket/HandbasketPage"));
 
+const Test = lazy(() => import("./stores/test"));
+
 function App() {
   return (
     <Suspense fallback={<div>Loading... </div>}>
       <BrowserRouter>
         <div className="App">
           <Switch>
+
+          <Route path="/test">
+              
+              <Test />
+              
+            </Route>
+
+
             <Route path="/storehome">
               <Header />
               <StoreHome />
               <Footer />
             </Route>
-            <Route path="/storepage/:store_id" component={StorePage}/>
+            <Route path="/storepage">
+              <Header />
+              <StorePage />
+              <Footer />
+            </Route>
             <Route path="/signin">
               <Header />
               <SignIn />
