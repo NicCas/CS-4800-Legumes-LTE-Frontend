@@ -9,6 +9,7 @@ const StoreHome = lazy(() => import("./stores/StoreHome"));
 const StorePage = lazy(() => import("./stores/StorePage"));
 const SignIn = lazy(() => import("./account/SignIn"));
 const SignUp = lazy(() => import("./account/SignUp"));
+const Account = lazy(() => import("./account/Account"));
 const Handbasket = lazy(() => import("./handbasket/HandbasketPage"));
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
               <StoreHome />
               <Footer />
             </Route>
-            <Route path="/storepage/:store_id" component={StorePage}/>
+            <Route path="/storepage/:store_id" component={StorePage} />
             <Route path="/signin">
               <Header />
               <SignIn />
@@ -36,6 +37,11 @@ function App() {
             <Route path="/handbasket">
               <Header />
               <Handbasket />
+              <Footer />
+            </Route>
+            <Route path="/account">
+              <Header />
+              <Account />
               <Footer />
             </Route>
             <Route path="/">

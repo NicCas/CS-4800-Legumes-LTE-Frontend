@@ -42,10 +42,10 @@ function Header() {
               </Link>
             </li>
             <li class="nav-item">
-              <Link to="storepage" class="nav-link">
+              <Link to="account" class="nav-link">
                 <div class="header-wrapper">
                   <img src={stores} class="header-image"></img>
-                  <b>Stores Page</b>
+                  <b>Account Test</b>
                 </div>
               </Link>
             </li>

@@ -1,92 +1,112 @@
 #handbasket-page {
-    position: relative;
-    padding: 100px 20px;
-    top: 80px;
-    background-image: linear-gradient(var(--purple3), var(--purple1));
-  }
+  position: relative;
+  padding: 100px 20px;
+  top: 80px;
+  background-image: linear-gradient(var(--purple3), var(--purple1));
+}
 
 #handbasket-container {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
 }
 
 #product-column {
-    width: 50%;
+  width: 50%;
 }
 
 #nav-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin: auto;
-    padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+}
+
+.basket-wrapper {
+  width: 100%;
+  display: inline-block;
+  justify-content: center;
+  text-align: center;
+}
+
+.basket-image {
+  width: 35px;
+  display: inline-block;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.basket-title {
+  display: inline-block;
+  text-align: center;
 }
 
 .product-image {
-    display: inline-block;
+  display: inline-block;
 }
 
 .product-name {
-    display: inline-block;
-    padding-left: 20%;
+  display: inline-block;
+  padding-left: 20%;
 }
 
 h1 {
-    font-weight: bold;
-    margin-top: -80px;
-    margin-bottom: 10px;
-    margin-left: 100px;
-    color: var(--purple5);
+  font-weight: bold;
+  margin-top: -80px;
+  margin-bottom: 10px;
+  margin-left: 100px;
+  color: var(--purple5);
 }
 
 table {
-    table-layout: fixed;
-    margin: auto;
-    position: relative;
-    width: 90%;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-collapse: collapse;
-    background-color: var(--yellow1);
-    box-shadow: 0px 0px 20px var(--purple4);
+  table-layout: fixed;
+  margin: auto;
+  position: relative;
+  width: 90%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-collapse: collapse;
+  background-color: var(--yellow1);
+  box-shadow: 0px 0px 20px var(--purple4);
 }
 
-td, th {
-    padding: 15px;
-    border-bottom: solid 1px var(--purple4);
+td,
+th {
+  padding: 15px;
+  border-bottom: solid 1px var(--purple4);
 }
 
 th {
-    color: var(--yellow5);
+  color: var(--yellow5);
 }
 
 td {
-    background-color: var(--purple1);
-    padding-left: 15px;
-    font-size: large;
+  background-color: var(--purple1);
+  padding-left: 15px;
+  font-size: large;
 }
 
 #nav-buttons button {
-    width: 300px;
-    margin: 5px;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    background-color: var(--yellow1);
-    color: var(--yellow5);
-    font-weight: bold;
-    box-shadow: 0px 0px 10px var(--purple4);
+  width: 300px;
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--yellow1);
+  color: var(--yellow5);
+  font-weight: bold;
+  box-shadow: 0px 0px 10px var(--purple4);
 }
 
 #total {
-    margin: auto;
-    position: relative;
-    width: 90%;
-    text-align: right;
-    padding: 15px;
-    border: solid 1px var(--purple4);
-    background-color: var(--purple1);
+  margin: auto;
+  position: relative;
+  width: 90%;
+  text-align: right;
+  padding: 15px;
+  border: solid 1px var(--purple4);
+  background-color: var(--purple1);
 }
 
 /* styling for smaller screens */
@@ -96,75 +116,90 @@ Max width before this PARTICULAR table gets nasty
 This query will take effect for any screen smaller than 760px
 and also iPads specifically.
 */
-@media 
-only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1024px)  {
+@media only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  h1 {
+    text-align: center;
+    margin-left: 0;
+    font-weight: bold;
+    color: var(--purple5);
+  }
 
-    h1 {
-        text-align: center;
-        margin-left: 0;
-        font-weight: bold;
-        color: var(--purple5);
-    }
+  /* make nav buttons vertically aligned */
+  #nav-buttons {
+    flex-direction: column;
+  }
 
-    /* make nav buttons vertically aligned */
-    #nav-buttons {
-        flex-direction: column;
-    }
+  /* change how product cell is shown */
+  .product-name {
+    display: block;
+    padding-left: 0%;
+  }
 
-    /* change how product cell is shown */
-    .product-name {
-        display: block;
-        padding-left: 0%;
-    }
-    
-    .product-image {
-        display: block;
-    }
+  .product-image {
+    display: block;
+  }
 
-	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr { 
-		display: block; 
-	}
-	
-	/* Hide table headers (but not display: none;, for accessibility) */
-	thead tr { 
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
-	
-	td { 
-		/* Behave  like a "row" */
-		border: none;
-        border-bottom: solid 1px var(--purple4); 
-		position: relative;
-		padding-left: 50%; 
-	}
+  /* Force table to not be like tables anymore */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
 
-    tr { border: solid 1px var(--purple4); }
-	
-	td:before { 
-		/* Now like a table header */
-		position: absolute;
-		/* Top/left values mimic padding */
-		top: 6px;
-		left: 6px;
-		width: 45%; 
-		padding-right: 10px; 
-		white-space: nowrap;
-	}
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
 
-    img {
-        margin: auto;
-    }
-	
-	/*
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: solid 1px var(--purple4);
+    position: relative;
+    padding-left: 50%;
+  }
+
+  tr {
+    border: solid 1px var(--purple4);
+  }
+
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  img {
+    margin: auto;
+  }
+
+  /*
 	Label the data
 	*/
-	td:nth-of-type(1):before { content: "Product"; }
-	td:nth-of-type(2):before { content: "Store"; }
-	td:nth-of-type(3):before { content: "Price"; }
-	td:nth-of-type(4):before { content: "Quantity"; }
-	td:nth-of-type(5):before { content: "Subtotal"; }
+  td:nth-of-type(1):before {
+    content: "Product";
+  }
+  td:nth-of-type(2):before {
+    content: "Store";
+  }
+  td:nth-of-type(3):before {
+    content: "Price";
+  }
+  td:nth-of-type(4):before {
+    content: "Quantity";
+  }
+  td:nth-of-type(5):before {
+    content: "Subtotal";
+  }
 }
