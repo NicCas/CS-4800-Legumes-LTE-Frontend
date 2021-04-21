@@ -1,6 +1,7 @@
 import React from "react";
 import "./HandbasketPage.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 axios.defaults.withCredentials = true;
 
@@ -17,7 +18,7 @@ export default class HandbasketPage extends React.Component {
         const data = res.data;
         var running_total = 0;
         for(var item of data){
-            running_total += parseFloat(item.Price.$numberDecimal);
+            running_total += parseFloat(item.Price.$numberDecimal)*(item.Quantity);
         }
         this.setState({ handbasket: data, total: running_total });
       })
@@ -32,34 +33,43 @@ export default class HandbasketPage extends React.Component {
           <div id="handbasket-container">
             <h1>Your Handbasket</h1>  
             <table id="handbasket-table">
+              <thead>
                 <tr>
-                    <th id='product-column'>Product</th>
-                    <th id='store-column'>Store</th>
-                    <th id='price-column'>Price</th>
-                    <th id='quantity-column'>Quantity</th>
-                    <th id='subtotal-column'>Subtotal</th>
+                      <th id='product-column'>Product</th>
+                      <th id='store-column'>Store</th>
+                      <th id='price-column'>Price</th>
+                      <th id='quantity-column'>Quantity</th>
+                      <th id='subtotal-column'>Subtotal</th>
                 </tr>
+              </thead>
                 { this.state.handbasket.map( item =>
                 <tr>
                     <td>
-                        <span class="product-image">
+                        <div class="product-image">
                             <img src={item.Image_URL} width="150px" height="150px"></img>
-                        </span>
-                        <span class="product-name">
+                        </div>
+                        <div class="product-name">
                             {item.Item_Name}
-                        </span>
+                        </div>
                     </td>
                     <td>{item.Store_Name}</td>
                     <td>${item.Price.$numberDecimal}</td>
-                    <td>1</td>
-                    <td>${item.Price.$numberDecimal}</td>
+                    <td>{item.Quantity}</td>
+                    <td>${item.Price.$numberDecimal * item.Quantity}</td>
                 </tr>
                 )}
-                <tr>
-                    <td colSpan={4}></td>
-                    <td><b>Total: ${this.state.total}</b></td>
-                </tr>
             </table>
+            <div id="total">
+              <b>Total: ${this.state.total}</b>
+            </div>
+            <div id="nav-buttons">
+              <Link to="/storehome">
+                <button>Continue Shopping</button>
+              </Link>
+              <Link to="/handbasket">
+                <button>Proceed to Checkout</button>
+              </Link>
+            </div>
           </div>
       </div>
     );
