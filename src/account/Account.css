@@ -1,0 +1,30 @@
+#account-page {
+  position: relative;
+  top: 80px;
+  background-image: linear-gradient(var(--purple3), var(--purple1));
+}
+
+#account-header {
+  background-color: var(--yellow2);
+  padding: 20px;
+  color: var(--yellow5);
+  padding-left: 40px;
+  width: 100%;
+  position: relative;
+}
+
+.account-wrapper {
+  width: 100%;
+}
+
+.account-image {
+  width: 40px;
+  display: inline-block !important;
+  margin-right: 10px;
+  padding-bottom: 20px;
+}
+
+.account-title {
+  display: inline-block !important;
+  font-size: 40px;
+}

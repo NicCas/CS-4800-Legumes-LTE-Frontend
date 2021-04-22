@@ -53,32 +53,32 @@ export default class Header extends React.Component {
           </button>
   
           <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <Link to="/storehome" class="nav-link">
-                  <div class="header-wrapper">
-                    <img src={stores} class="header-image"></img>
-                    <b>Stores Home</b>
-                  </div>
-                </Link>
-              </li>
-              <li class="nav-item">
-                <Link to="storepage" class="nav-link">
-                  <div class="header-wrapper">
-                    <img src={stores} class="header-image"></img>
-                    <b>Stores Page</b>
-                  </div>
-                </Link>
-              </li>
-              <li class="nav-item">
-                <Link to="/signin" class="nav-link">
-                  <div class="header-wrapper">
-                    <img src={profile} class="header-image"></img>
-                    <b>{this.state.username}</b>
-                  </div>
-                </Link>
-              </li>
-            </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <Link to="/storehome" class="nav-link">
+                <div class="header-wrapper">
+                  <img src={stores} class="header-image"></img>
+                  <b>Stores Home</b>
+                </div>
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link to="account" class="nav-link">
+                <div class="header-wrapper">
+                  <img src={stores} class="header-image"></img>
+                  <b>Account Test</b>
+                </div>
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link to="/signin" class="nav-link">
+                <div class="header-wrapper">
+                  <img src={profile} class="header-image"></img>
+                  <b>{this.state.username}</b>
+                </div>
+              </Link>
+            </li>
+          </ul>
   
             <ul class="navbar-nav ml-auto">
               <form class="form-inline" action="#">
