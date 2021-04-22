@@ -5,8 +5,6 @@ import backsplash from "../assets/backsplash_placeholder.png";
 import { lazy } from "react";
 //import item from "./item_placeholder.png";
 import item from "../assets/item_placeholder.png";
-const Header = lazy(() => import("../main/Header"));
-const Footer = lazy(() => import("../main/Footer"));
 
 export default class StorePage extends React.Component {
   constructor(props) {
@@ -39,7 +37,6 @@ export default class StorePage extends React.Component {
   render() {
     return (
       <div id="store-page">
-        <Header />
         <div>
           <img src={backsplash} id="backsplash"></img>
         </div>
@@ -137,7 +134,6 @@ export default class StorePage extends React.Component {
             <div id="extra-space"></div>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }

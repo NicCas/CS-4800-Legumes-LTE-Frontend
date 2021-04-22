@@ -16,34 +16,26 @@ function App() {
     <Suspense fallback={<div>Loading... </div>}>
       <BrowserRouter>
         <div className="App">
+          <Header />
           <Switch>
             <Route path="/storehome">
-              <Header />
               <StoreHome />
-              <Footer />
             </Route>
             <Route path="/storepage/:store_id" component={StorePage}/>
             <Route path="/signin">
-              <Header />
               <SignIn />
-              <Footer />
             </Route>
             <Route path="/signup">
-              <Header />
               <SignUp />
-              <Footer />
             </Route>
             <Route path="/handbasket">
-              <Header />
               <Handbasket />
-              <Footer />
             </Route>
             <Route path="/">
-              <Header />
               <Home />
-              <Footer />
             </Route>
           </Switch>
+          <Footer />
         </div>
       </BrowserRouter>
     </Suspense>
