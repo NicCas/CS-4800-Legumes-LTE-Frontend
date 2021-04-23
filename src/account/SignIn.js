@@ -2,7 +2,7 @@ import React from "react";
 import "./SignIn.css";
 import username from "../assets/profile.png";
 import password from "../assets/password.png";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -12,7 +12,9 @@ export default class SignIn extends React.Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      redirect: null,
+      error: false
     };
 
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -33,6 +35,8 @@ export default class SignIn extends React.Component {
   }
 
   handleSubmit(event){
+    let currentComponent = this;
+    var loggedIn;
     axios("https://chickpeaapi.glitch.me/login/attempt", {
       method: "post",
       data: {
@@ -42,11 +46,22 @@ export default class SignIn extends React.Component {
     })
     .then(function(response) {
       console.log(response.data);
+      loggedIn = response.data;
+      if(loggedIn) {
+        currentComponent.setState( { redirect: "/account" } )
+      }
+      else {
+        currentComponent.setState({ error: true })
+      }
     });
     event.preventDefault();
   }
 
   render() {
+
+    if(this.state.redirect){
+      return (<Redirect to={this.state.redirect} />);
+    }
     return (
       <div id="sign-in-page">
         <div class="sign-in-field">
@@ -55,7 +70,9 @@ export default class SignIn extends React.Component {
               <h2 id="sign-in-title">
                 <b>Sign In</b>
               </h2>
-  
+              {this.state.error &&
+                  <p>Invalid login details! Please try again.</p>
+                }
               <label for="username">
                 <div class="image-wrapper">
                   <img src={username} class="image"></img>
