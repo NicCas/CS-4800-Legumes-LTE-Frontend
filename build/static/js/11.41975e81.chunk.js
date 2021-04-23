@@ -1,2 +1,0 @@
-(this.webpackJsonpclient=this.webpackJsonpclient||[]).push([[11],{79:function(i,c,e){},83:function(i,c,e){"use strict";e.r(c);e(0),e(79);var n=e(1);c.default=function(){return Object(n.jsxs)("div",{id:"account-page",children:[Object(n.jsx)("div",{id:"account-title",children:Object(n.jsx)("h3",{children:"Account"})}),Object(n.jsx)("div",{id:"profile-info",children:"Profile info"}),Object(n.jsx)("div",{id:"orders",children:"recent orders"})]})}}}]);
-//# sourceMappingURL=11.41975e81.chunk.js.map

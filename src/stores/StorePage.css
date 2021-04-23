@@ -1,23 +1,125 @@
 #store-page {
-  background-color: var(--purple1);
+  position: relative;
+  top: 80px;
+  background-image: linear-gradient(var(--purple4), var(--purple2));
+}
+
+#store-header {
+  background-color: var(--yellow2);
+  padding: 20px;
+  color: var(--yellow5);
+  padding-left: 40px;
   width: 100%;
   position: relative;
-  top: 50px;
+  text-align: center;
 }
 
-ul.nav-pills {
-  top: 10%;
-  position: fixed;
+.store-wrapper {
+  width: 100%;
 }
 
-.nav-pills .pill .nav-link:not(.active) {
-  background-color: var(--purple5);
-  color: var(--yellow1);
+.store-image {
+  width: 40px;
+  display: inline-block !important;
+  margin-right: 10px;
+  padding-bottom: 20px;
 }
 
-.nav-pills .pill .nav-link {
-  background-color: var(--yellow1);
+.store-title {
+  display: inline-block !important;
+  font-size: 40px;
+}
+
+.store-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 80px;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  padding: 20px 80px;
+}
+
+.store-grid-item {
+  background: var(--purple1);
   color: var(--purple5);
+  border-radius: 5px;
+  padding: 20px !important;
+}
+
+.store-grid-item h3 {
+  color: var(--purple3);
+  font-size: 25px;
+  text-align: center;
+}
+
+#order-history {
+  margin: 20px 80px;
+  margin-bottom: 100px;
+  padding-bottom: 100px;
+  bottom: 100;
+}
+
+#store-info {
+  margin-bottom: 40px;
+}
+
+#extra-space-store {
+  height: 1px;
+}
+
+.info-block {
+  display: inline-block;
+}
+
+#info-title {
+  border-right: solid 2px var(--purple4);
+  padding-right: 10px;
+  margin-right: 10px;
+}
+
+.item-column {
+  width: 50%;
+}
+
+#order-info p {
+  margin: 10px !important;
+  margin-left: 0px !important;
+}
+
+#price-info {
+  text-align: right;
+  padding-top: 10px;
+}
+
+#price-info p {
+  margin: 0px !important;
+}
+
+table {
+  table-layout: fixed;
+  margin: auto;
+  position: relative;
+  width: 100%;
+  border: 2px solid var(--purple4);
+  border-collapse: collapse;
+  background-color: var(--yellow1);
+}
+
+td,
+th {
+  padding: 15px;
+  border-bottom: solid 1px var(--purple4);
+}
+
+th {
+  color: var(--yellow5);
+}
+
+td {
+  background-color: var(--purple1);
+  padding-left: 15px;
+  font-size: 15;
 }
 
 .rating {
@@ -36,6 +138,7 @@ ul.nav-pills {
   width: 1em;
   font-size: 25px;
   color: var(--yellow1);
+  cursor: pointer;
 }
 
 .rating > label::before {
@@ -44,63 +147,20 @@ ul.nav-pills {
   opacity: 0;
 }
 
+.rating > label:hover:before,
+.rating > label:hover ~ label:before {
+  opacity: 1 !important;
+}
+
 .rating > input:checked ~ label:before {
   opacity: 1;
 }
 
+.rating:hover > input:checked ~ label:before {
+  opacity: 0.4;
+}
 #backsplash {
   height: 30%;
   width: 100%;
-  position: fixed;
-}
-
-.col-sm-3 {
-  background-color: var(--purple5);
-  color: var(--purple1);
-  max-width: 1000px;
-}
-
-.row {
-  width: 1000px;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
-}
-
-div.col-8 div {
-  height: auto;
-}
-
-div.col-sm-9 div {
   position: relative;
-  z-index: -1;
-  padding-bottom: 100px;
-}
-
-#pantry {
-  margin-top: 220px;
-}
-
-.card-img-top {
-  justify-content: center;
-}
-
-.card-deck {
-  margin: 0px !important;
-  padding: 0px !important;
-}
-
-.card-footer {
-  margin: 0px !important;
-  padding: 0px !important;
-}
-
-.card-body {
-  margin: 0px !important;
-  padding: 0px !important;
-}
-
-.card {
-  margin: 10px !important;
-  padding: 10px !important;
 }
