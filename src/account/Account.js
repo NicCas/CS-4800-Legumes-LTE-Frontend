@@ -7,9 +7,8 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 axios.defaults.withCredentials = true;
 
 export default class Account extends React.Component {
-
   state = {
-    customer: {}
+    customer: {},
   };
 
   componentDidMount() {
@@ -18,8 +17,8 @@ export default class Account extends React.Component {
       .then((res) => {
         const data = res.data;
         //console.log(data);
-        if(data.LoggedIn){
-          this.setState({customer: data.Username})
+        if (data.LoggedIn) {
+          this.setState({ customer: data.Username });
         }
       })
       .catch(function (error) {
@@ -27,12 +26,21 @@ export default class Account extends React.Component {
       });
   }
 
-  render(){
+  render() {
     return (
       <div id="account-page">
         <div id="account-header" class="account-wrapper">
-          <img src={account} class="account-image"></img>
-          <h3 class="account-title">Hello, {this.state.customer.Username}</h3>
+          <div id="name-image">
+            <img src={account} class="account-image"></img>
+            <h3 class="account-title">Hello, {this.state.customer.Username}</h3>
+          </div>
+          <div id="logout-button">
+            <a href="/login/logout">
+              <button href="/login/logout" class="purple-button btn">
+                Logout
+              </button>
+            </a>
+          </div>
         </div>
         <div class="account-grid-container">
           <div id="left-column">
@@ -45,10 +53,8 @@ export default class Account extends React.Component {
                 <p>Shipping Address </p>
               </div>
               <div class="info-block">
-                <div>
-                  {this.state.customer.Username}
-                </div>
-                <p> {this.state.customer.Username} </p> 
+                <div>{this.state.customer.Username}</div>
+                <p> {this.state.customer.Username} </p>
                 <p>User Email</p>
                 <p>User BillingAddress</p>
                 <p>User ShippingAddress</p>
@@ -129,7 +135,3 @@ export default class Account extends React.Component {
     );
   }
 }
-
-
-
-
