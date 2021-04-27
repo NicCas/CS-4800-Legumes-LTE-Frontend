@@ -18,9 +18,9 @@ export default class PaymentDetails extends React.Component {
         return(
             <div id="checkout-step2" class="fade-in">
                 <h1>Step 2: Payment Information</h1>
-                <h2>Delivery Address</h2>
+                <h2>Card Information</h2>
                 <Form>
-                    <Form.Group controlId="ShipStreet">
+                    <Form.Group controlId="CardNum">
                         <Form.Label>Card Number</Form.Label>
                         <Form.Control
                             id="Card_Number"
@@ -31,36 +31,83 @@ export default class PaymentDetails extends React.Component {
                             onChange={this.props.handleChange} 
                         />
                     </Form.Group>
-                    <Form.Group controlId="ShipCity">
+                    <Form.Group controlId="CardName">
+                        <Form.Label>Name on Card</Form.Label>
+                        <Form.Control 
+                            id="Card_Name"
+                            name="Card_Name"
+                            type="text" 
+                            placeholder="Name"
+                            value={this.props.Card_Name}
+                            onChange={this.props.handleChange}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="CVV">
+                        <Form.Label>CVV</Form.Label>
+                        <Form.Control 
+                            id="CVV"
+                            name="CVV"
+                            type="text" 
+                            placeholder="123"
+                            value={this.props.CVV}
+                            onChange={this.props.handleChange}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="Exp_Date">
+                        <Form.Label>Expiration Date</Form.Label>
+                        <Form.Control 
+                            id="Exp_Date"
+                            name="Exp_Date"
+                            type="text" 
+                            placeholder="xx/xx"
+                            value={this.props.Exp_Date}
+                            onChange={this.props.handleChange}
+                        />
+                    </Form.Group>
+                </Form>
+                <h2>Billing Address</h2>
+                <Form>
+                    <Form.Group controlId="BillStreet">
+                        <Form.Label>Street</Form.Label>
+                        <Form.Control
+                            id="Billing_Street"
+                            name="Billing_Street"
+                            type="text" 
+                            placeholder="Street name"
+                            value={this.props.Billing_Street}
+                            onChange={this.props.handleChange} 
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="BillCity">
                         <Form.Label>City</Form.Label>
                         <Form.Control 
-                            id="Shipping_City"
-                            name="Shipping_City"
+                            id="Billing_City"
+                            name="Billing_City"
                             type="text" 
                             placeholder="City name"
-                            value={this.props.Shipping_City}
+                            value={this.props.Billing_City}
                             onChange={this.props.handleChange}
                         />
                     </Form.Group>
-                    <Form.Group controlId="ShipState">
+                    <Form.Group controlId="BillState">
                         <Form.Label>State</Form.Label>
                         <Form.Control 
-                            id="Shipping_State"
-                            name="Shipping_State"
+                            id="Billing_State"
+                            name="Billing_State"
                             type="text" 
                             placeholder="New Spork"
-                            value={this.props.Shipping_State}
+                            value={this.props.Billing_State}
                             onChange={this.props.handleChange}
                         />
                     </Form.Group>
-                    <Form.Group controlId="ShipZIP">
+                    <Form.Group controlId="BillZIP">
                         <Form.Label>ZIP Code</Form.Label>
                         <Form.Control 
-                            id="Shipping_ZIP"
-                            name="Shipping_ZIP"
+                            id="Billing_ZIP"
+                            name="Billing_ZIP"
                             type="text" 
                             placeholder="12345"
-                            value={this.props.Shipping_ZIP}
+                            value={this.props.Billing_ZIP}
                             onChange={this.props.handleChange}
                         />
                     </Form.Group>
