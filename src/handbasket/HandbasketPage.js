@@ -73,7 +73,7 @@ export default class HandbasketPage extends React.Component {
             <Link to="/storehome">
               <button>Continue Shopping</button>
             </Link>
-            <Link to="/handbasket">
+            <Link to="/checkout">
               <button>Proceed to Checkout</button>
             </Link>
           </div>
