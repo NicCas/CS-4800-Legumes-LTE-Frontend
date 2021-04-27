@@ -45,7 +45,7 @@ function Store() {
             <img src={backsplash} id="backsplash"></img>
 
             <div class="info-block" id="info-title">
-            <h2>{this.state.store.Store_Name}</h2>
+            <h2>state.store.Store_Name</h2>
 
             <div class="rating">
               <input
@@ -95,15 +95,15 @@ function Store() {
             </div>
 
             <p>
-              {this.state.store.Address_Street}
+              state.store.Address_Street
               <br></br>
-              {this.state.store.Address_City}
+              state.store.Address_City
               <br></br>
-              {this.state.store.Address_State}
+              state.store.Address_State
               <br></br>
-              {this.state.store.Address_Zipcode}
+              state.store.Address_Zipcode
               <br></br>
-              {this.state.store.Phone_Number}
+              state.store.Phone_Number
             </p>
             </div>
             <div class="info-block">

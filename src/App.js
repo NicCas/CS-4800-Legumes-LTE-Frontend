@@ -11,6 +11,7 @@ const SignIn = lazy(() => import("./account/SignIn"));
 const SignUp = lazy(() => import("./account/SignUp"));
 const Account = lazy(() => import("./account/Account"));
 const Handbasket = lazy(() => import("./handbasket/HandbasketPage"));
+const Checkout = lazy(() => import("./checkout/Checkout"));
 
 function App() {
   return (
@@ -29,9 +30,8 @@ function App() {
             <Route path="/signup">
               <SignUp />
             </Route>
-            <Route path="/handbasket">
-              <Handbasket />
-            </Route>
+            <Route path="/handbasket" component={Handbasket} />
+            <Route path="/checkout" component={Checkout} />
             <Route path="/account">
               <Header />
               <Account />
