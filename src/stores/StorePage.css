@@ -4,42 +4,6 @@
   background-image: linear-gradient(var(--purple4), var(--purple2));
 }
 
-#store-header {
-  background-color: var(--yellow2);
-  padding: 20px;
-  color: var(--yellow5);
-  padding-left: 40px;
-  width: 100%;
-  position: relative;
-  text-align: center;
-}
-
-.store-wrapper {
-  width: 100%;
-}
-
-.store-image {
-  width: 40px;
-  display: inline-block !important;
-  margin-right: 10px;
-  padding-bottom: 20px;
-}
-
-.store-title {
-  display: inline-block !important;
-  font-size: 40px;
-}
-
-.store-grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  gap: 80px;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-  padding: 20px 80px;
-}
-
 .store-grid-item {
   background: var(--purple1);
   color: var(--purple5);
@@ -61,6 +25,7 @@
   position: relative;
   width: 100%;
   padding: 20px 20px;
+  padding-top: 80px;
   margin-bottom: 80px;
   background: var(--purple1);
   color: var(--purple5);
@@ -70,21 +35,17 @@
 .items-grid-cont h3 {
   color: var(--purple4);
   font-size: 25px;
-  text-align: center;
-  margin-bottom: -50px;
+  position: absolute;
+  padding: 20px;
 }
 
 .inner-grid-cont {
+  width: 100%;
   display: grid;
   gap: 50px;
+  justify-content: center;
+  align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-}
-
-#order-history {
-  margin: 20px 80px;
-  margin-bottom: 100px;
-  padding-bottom: 100px;
-  bottom: 100;
 }
 
 #store-info {
@@ -96,56 +57,12 @@
 }
 
 .info-block {
-  display: inline-block;
+  display: inline-block !important;
 }
 
 #info-title {
-  border-right: solid 2px var(--purple4);
   padding-right: 10px;
   margin-right: 10px;
-}
-
-.item-column {
-  width: 50%;
-}
-
-#order-info p {
-  margin: 10px !important;
-  margin-left: 0px !important;
-}
-
-#price-info {
-  text-align: right;
-  padding-top: 10px;
-}
-
-#price-info p {
-  margin: 0px !important;
-}
-
-table {
-  table-layout: fixed;
-  margin: auto;
-  position: relative;
-  width: 100%;
-  border: 2px solid var(--purple4);
-  border-collapse: collapse;
-}
-
-td,
-th {
-  padding: 15px;
-  border-bottom: solid 1px var(--purple4);
-}
-
-th {
-  color: var(--yellow5);
-}
-
-td {
-  background-color: var(--purple1);
-  padding-left: 15px;
-  font-size: 15;
 }
 
 .rating {
@@ -175,14 +92,87 @@ td {
   opacity: 1;
 }
 
-#backsplash {
-  height: auto;
-  width: 100%;
-  position: relative;
-  margin-bottom:20px;
+#backsplash-div {
+  height: 150px;
+  width: auto;
+  background-image: url("../assets/backsplash_placeholder.png");
+  background-repeat: repeat-x;
 }
 
 #item-icon {
   width: 75px;
   margin-left: 40px;
+  margin-top: 10px;
+  margin-bottom: -10px;
+}
+
+#rating-wrapper {
+  float: left;
+}
+
+#categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+#categories {
+  width: 100%;
+  display: inline-block !important;
+  margin-bottom: 40px;
+}
+
+.store-grid-container {
+  padding: 80px;
+}
+
+.cat {
+  background: var(--yellow2);
+  color: var(--yellow4);
+  margin: 10px;
+  padding: 5px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.cat:hover {
+  background: var(--yellow3);
+  color: var(--yellow5);
+}
+
+.cat:active {
+  background: var(--yellow4);
+  color: var(--yellow1);
+}
+
+@media only screen and (max-width: 500px) {
+  #store-page {
+    font-size: 10px !important;
+  }
+
+  #store-page h3 {
+    font-size: 15px !important;
+  }
+
+  #store-page h2 {
+    font-size: 20px !important;
+  }
+
+  #item-icon {
+    width: 30px;
+  }
+
+  .inner-grid-cont {
+    display: block;
+    justify-content: center;
+    position: relative;
+  }
+
+  .cards {
+    width: 500px;
+    margin-bottom: 10px;
+  }
+
+  .store-grid-container {
+    padding: 10px;
+  }
 }

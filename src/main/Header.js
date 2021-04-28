@@ -10,26 +10,25 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default class Header extends React.Component {
-
   state = {
-    username: 'Account'
-  }
+    username: "Account",
+  };
 
-  componentDidMount(){
-    axios.get("https://chickpeaapi.glitch.me/user", { withCredentials: true })
-    .then((res) => {
-      const data = res.data;
-      console.log(data);
-      if(data.loggedIn){
-        this.setState({ username: data.Username})
-      }
-      else{
-        this.setState({ username: 'Account' })
-      }
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
+  componentDidMount() {
+    axios
+      .get("https://chickpeaapi.glitch.me/user", { withCredentials: true })
+      .then((res) => {
+        const data = res.data;
+        console.log(data);
+        if (data.loggedIn) {
+          this.setState({ username: data.Username });
+        } else {
+          this.setState({ username: "Account" });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   render() {
@@ -44,7 +43,7 @@ export default class Header extends React.Component {
               </div>
             </Link>
           </a>
-  
+
           <button
             class="navbar-toggler"
             id="menu-icon-button"
@@ -54,35 +53,27 @@ export default class Header extends React.Component {
           >
             <img id="menu-icon" src={menu}></img>
           </button>
-  
+
           <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <Link to="/storehome" class="nav-link">
-                <div class="header-wrapper">
-                  <img src={stores} class="header-image"></img>
-                  <b>Stores Home</b>
-                </div>
-              </Link>
-            </li>
-            <li class="nav-item">
-              <Link to="account" class="nav-link">
-                <div class="header-wrapper">
-                  <img src={stores} class="header-image"></img>
-                  <b>Account Test</b>
-                </div>
-              </Link>
-            </li>
-            <li class="nav-item">
-              <Link to="/signin" class="nav-link">
-                <div class="header-wrapper">
-                  <img src={profile} class="header-image"></img>
-                  <b>{this.state.username}</b>
-                </div>
-              </Link>
-            </li>
-          </ul>
-  
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <Link to="/storehome" class="nav-link">
+                  <div class="header-wrapper">
+                    <img src={stores} class="header-image"></img>
+                    <b>Stores Home</b>
+                  </div>
+                </Link>
+              </li>
+              <li class="nav-item">
+                <Link to="/signin" class="nav-link">
+                  <div class="header-wrapper">
+                    <img src={profile} class="header-image"></img>
+                    <b>{this.state.username}</b>
+                  </div>
+                </Link>
+              </li>
+            </ul>
+
             <ul class="navbar-nav ml-auto">
               <form class="form-inline" action="#">
                 <img src={search} class="header-image"></img>
