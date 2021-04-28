@@ -36,59 +36,60 @@ function Store() {
       </div>
 
       <div class="store-grid-container">
-        <div id="left-column">
+        
+       <div class="col">
           <div id="store-info" class="store-grid-item">
             <img src={backsplash} id="backsplash"></img>
 
-            <div class="info-block" id="info-title">
-              <h2>state.store.Store_Name</h2>
+            <h2>state.store.Store_Name</h2>
+            <div class="rating">
+              <input
+                type="radio"
+                name="rating"
+                value="5"
+                id="5"
+                disabled="true"
+              ></input>
+              <label for="5">☆</label>
+              <input
+                type="radio"
+                name="rating"
+                value="4"
+                id="4"
+                checked=""
+                disabled="true"
+              ></input>
+              <label for="4">☆</label>
+              <input
+                type="radio"
+                name="rating"
+                value="3"
+                id="3"
+                checked="checked"
+                disabled="true"
+              ></input>
+              <label for="3">☆</label>
+              <input
+                type="radio"
+                name="rating"
+                value="2"
+                id="2"
+                checked=""
+                disabled="true"
+              ></input>
+              <label for="2">☆</label>
+              <input
+                type="radio"
+                name="rating"
+                value="1"
+                id="1"
+                checked=""
+                disabled="true"
+              ></input>
+              <label for="1">☆</label>
+            </div>
 
-              <div class="rating">
-                <input
-                  type="radio"
-                  name="rating"
-                  value="5"
-                  id="5"
-                  disabled="true"
-                ></input>
-                <label for="5">☆</label>
-                <input
-                  type="radio"
-                  name="rating"
-                  value="4"
-                  id="4"
-                  checked=""
-                  disabled="true"
-                ></input>
-                <label for="4">☆</label>
-                <input
-                  type="radio"
-                  name="rating"
-                  value="3"
-                  id="3"
-                  checked="checked"
-                  disabled="true"
-                ></input>
-                <label for="3">☆</label>
-                <input
-                  type="radio"
-                  name="rating"
-                  value="2"
-                  id="2"
-                  checked=""
-                  disabled="true"
-                ></input>
-                <label for="2">☆</label>
-                <input
-                  type="radio"
-                  name="rating"
-                  value="1"
-                  id="1"
-                  checked=""
-                  disabled="true"
-                ></input>
-                <label for="1">☆</label>
-              </div>
+            <div class="info-block" id="info-title">
 
               <div id="store-info-text">
                 <p>
@@ -113,37 +114,48 @@ function Store() {
               <p>Category</p>
             </div>
           </div>
-        </div>
+ 
 
-        <div id="items-list">
-          <div class="items-grid-cont">
-            <h3>Category</h3>
-            <div class="inner-grid-cont">
-              <div class="items-grid-item">
-                <ItemCards></ItemCards>
-              </div>
-              <div class="items-grid-item">
-                <ItemCards></ItemCards>
-              </div>
-              <div class="items-grid-item">
-                <ItemCards></ItemCards>
+          <div id="items-list">
+            <div class="items-grid-cont">
+              <h3>Category</h3>
+              <div class="inner-grid-cont">
+                <div class="items-grid-item">
+                  <ItemCards></ItemCards>
+                </div>
+                <div class="items-grid-item">
+                  <ItemCards></ItemCards>
+                </div>
+                <div class="items-grid-item">
+                  <ItemCards></ItemCards>
+                </div>
+                <div class="items-grid-item">
+                  <ItemCards></ItemCards>
+                </div>
+                <div class="items-grid-item">
+                  <ItemCards></ItemCards>
+                </div>
+                <div class="items-grid-item">
+                  <ItemCards></ItemCards>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="items-grid-cont">
-            <h3>Category</h3>
-            <div class="inner-grid-cont">
-              <div class="items-grid-item">
-                <ItemCards></ItemCards>
-              </div>
-              <div class="items-grid-item">
-                <ItemCards></ItemCards>
-              </div>
-              <div class="items-grid-item">
-                <ItemCards></ItemCards>
+            <div class="items-grid-cont">
+              <h3>Category</h3>
+              <div class="inner-grid-cont">
+                <div class="items-grid-item">
+                  <ItemCards></ItemCards>
+                </div>
+                <div class="items-grid-item">
+                  <ItemCards></ItemCards>
+                </div>
+                <div class="items-grid-item">
+                  <ItemCards></ItemCards>
+                </div>
               </div>
             </div>
+            
           </div>
         </div>
       </div>
