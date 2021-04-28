@@ -27,6 +27,7 @@ export default class Account extends React.Component {
   }
 
   handleLogout(){
+    console.log("I am logging out");
     axios.get(`https://chickpeaapi.glitch.me/login/logout`, {withCredentials: true});
   }
 
@@ -40,7 +41,7 @@ export default class Account extends React.Component {
           </div>
           <div id="logout-button">
             <a href="/home">
-              <button href="/home" class="purple-button btn" onClick={this.handleLogout()}>
+              <button href="/home" class="purple-button btn" onClick={() => this.handleLogout()}>
                 Logout
               </button>
             </a>

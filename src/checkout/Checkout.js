@@ -1,6 +1,5 @@
 import React, { lazy } from 'react'
 import "./Checkout.css";
-import "../handbasket/HandbasketPage.css"
 import axios from 'axios'
 
 /* importing the form components
