@@ -45,12 +45,11 @@ function Store() {
         <div id="left-column">
           <div id="store-info" class="store-grid-item">
             <img src={backsplash} id="backsplash"></img>
-
-            <div class="info-block" id="info-title">
-            {/*<h2>{this.state.store.Store_Name}</h2>*/}
+            <br></br>
+            <br></br>
             <h2>Store Name</h2>
-
-
+            {/*<h2>{this.state.store.Store_Name}</h2>*/}
+            
             <div class="rating">
               <input
                 type="radio"
@@ -97,6 +96,9 @@ function Store() {
               ></input>
               <label for="1">☆</label>
             </div>
+
+            <div class="info-block" id="info-title">
+            
 {/*}
             <p>
               {this.state.store.Address_Street}
@@ -124,6 +126,8 @@ function Store() {
 
             </div>
             <div class="info-block">
+              <p></p>
+              <p></p>
               <h3>Item Categories</h3>
               <p>Category</p>
               <p>Category</p>
@@ -132,7 +136,6 @@ function Store() {
               <p>Category</p>
             </div>
           </div>
-          
         </div>
 
         <div id="recent-order" class="store-grid-item">
@@ -143,6 +146,22 @@ function Store() {
                 {test.map(function(index){
                   <td><ItemCards /></td>
                 })}
+
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
               </CardDeck>
             </tr>
           </table>
