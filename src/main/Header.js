@@ -23,6 +23,9 @@ export default class Header extends React.Component {
       if(data.loggedIn){
         this.setState({ username: data.Username})
       }
+      else{
+        this.setState({ username: 'Account' })
+      }
     })
     .catch(function(error) {
       console.log(error);

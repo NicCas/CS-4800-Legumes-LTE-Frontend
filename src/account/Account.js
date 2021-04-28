@@ -26,6 +26,10 @@ export default class Account extends React.Component {
       });
   }
 
+  handleLogout(){
+    axios.get(`https://chickpeaapi.glitch.me/login/logout`, {withCredentials: true});
+  }
+
   render() {
     return (
       <div id="account-page">
@@ -35,8 +39,8 @@ export default class Account extends React.Component {
             <h3 class="account-title">Hello, {this.state.customer.Username}</h3>
           </div>
           <div id="logout-button">
-            <a href="/login/logout">
-              <button href="/login/logout" class="purple-button btn">
+            <a href="/home">
+              <button href="/home" class="purple-button btn" onClick={this.handleLogout()}>
                 Logout
               </button>
             </a>
