@@ -7,6 +7,7 @@ export default class HandbasketTable extends React.Component{
     state = {
         handbasket: [],
         total: 0,
+        remove: null
       };
     
       componentDidMount() {
@@ -25,6 +26,30 @@ export default class HandbasketTable extends React.Component{
             console.log(error);
           });
       }
+
+      removeItem(id){
+        axios(`https://chickpeaapi.glitch.me/cart/remove`, 
+        {
+          method: "post",
+          data: {
+            Item_ID: id
+          }
+        })
+          .then((res) => {
+            console.log(res.data);
+            var new_handbasket = [];
+            var to_remove;
+            for(var item of this.state.handbasket){
+              if(item.Item_ID !== id)
+                new_handbasket.push(item);
+              else
+                to_remove = item;
+            }
+            var new_total = this.state.total - (to_remove.Price.$numberDecimal * to_remove.Quantity);
+            this.setState({ handbasket: new_handbasket, total: new_total });
+          })
+      }
+
     render(){
         return(
             <div class="handbasket-contents">
@@ -36,6 +61,7 @@ export default class HandbasketTable extends React.Component{
                     <th id="price-column">Price</th>
                     <th id="quantity-column">Quantity</th>
                     <th id="subtotal-column">Subtotal</th>
+                    <th id="remove"></th>
                 </tr>
                 </thead>
                 {this.state.handbasket.map((item) => (
@@ -54,11 +80,14 @@ export default class HandbasketTable extends React.Component{
                     <td>${item.Price.$numberDecimal}</td>
                     <td>{item.Quantity}</td>
                     <td>${item.Price.$numberDecimal * item.Quantity}</td>
+                    <td>
+                      <button className="btn" onClick={()=>this.removeItem(item.Item_ID)}>Remove from Handbasket</button>
+                    </td>
                 </tr>
                 ))}
             </table>
             <div id="total">
-                <b>Total: ${this.state.total}</b>
+                <b>Total: ${this.state.total.toFixed(2)}</b>
             </div>
             </div>
         );
