@@ -176,3 +176,12 @@
     padding: 10px;
   }
 }
+
+/* Adds padding from top so categories are not cut off by the header 
+ * when navigating using the category buttons */
+a.anchor {
+  display: block;
+  position: relative;
+  top: -100px;
+  visibility: hidden;
+}

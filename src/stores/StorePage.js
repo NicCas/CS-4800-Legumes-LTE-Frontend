@@ -1,22 +1,39 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+import InputGroup from 'react-bootstrap/InputGroup'
+import Button from 'react-bootstrap/Button'
 import "./StorePage.css";
 import item from "../assets/item_placeholder.png";
 
+{/* For dynamic implementation ItemCards code should be placed back into the main function, to simplify passing arguments.
+  * it is seperated here for ease of testing */}
 function ItemCards() {
   return (
     <Card style={{ width: "10rem" }}>
       <Card.Img
         variant="top"
         id="item-icon"
-        src={item}
+        src={item} 
         alt="Placeholder Item Picture"
-      />
+      />{/* Change item to an alt if database image does not exist */}
 
       <Card.Body>
         <Card.Title>Item Name</Card.Title>
         <Card.Text>$ Price</Card.Text>
+{/*
+        <InputGroup className="mb-3">
+          <InputGroup.Append>
+            <Button variant="outline-secondary">Buy</Button>
+          </InputGroup.Append>
+          <FormControl
+            placeholder="Number of Items"
+            aria-label="Number of Items"
+            aria-describedby="basic-addon2"
+          />
+        </InputGroup>
+*/}
         <button class="btn">Buy</button>
+        
       </Card.Body>
 
       <Card.Footer>
@@ -26,15 +43,19 @@ function ItemCards() {
   );
 }
 
+{/* The main funcion */}
 function Store() {
   return (
     <div id="store-page">
       <div class="store-grid-container">
+        {/* Container for the first two boxes; store info and the category buttons */}
         <div id="top-items">
+          {/* Store Info box */}
           <div id="store-info" class="store-grid-item">
             <div id="backsplash-div"></div>
             <h2>state.store.Store_Name</h2>
 
+            {/* Code for the star rating */}
             <div class="info-block" id="info-title">
               <div id="rating-wrapper">
                 <div class="rating">
@@ -100,13 +121,16 @@ function Store() {
             </div>
           </div>
 
+          {/* Categories button box */}
           <div class="info-block store-grid-item" id="categories">
             <h3>Categories</h3>
+            {/* This section should be a dynamic loop */}
             <div id="categories-grid">
-              <a class="cat" href="#">
+              {/* href needs to be dynamically named, maybe the category title itself?*/}
+              <a class="cat" href="#cat1">
                 Category
               </a>
-              <a class="cat" href="#">
+              <a class="cat" href="#cat2">
                 Category
               </a>
               <a class="cat" href="#">
@@ -131,10 +155,14 @@ function Store() {
           </div>
         </div>
 
+        
         <div id="items-list">
+          {/* Beginning of items box, this will be a loop per category */}
+          <a class="anchor" id="cat1"></a> {/* What the category button links to, anchor provides buffer from header, id is the same as the corresponding button */}
           <div class="items-grid-cont">
             <h3>Category</h3>
             <div class="inner-grid-cont">
+              {/* This will be a loop per item */}
               <div class="items-grid-item">
                 <ItemCards></ItemCards>
               </div>
@@ -156,7 +184,9 @@ function Store() {
             </div>
           </div>
 
-          <div class="items-grid-cont">
+          {/* For dynamic data remove this section */}
+          <a class="anchor" id="cat2"></a> 
+          <div class="items-grid-cont" id="cat2">
             <h3>Category</h3>
             <div class="inner-grid-cont">
               <div class="items-grid-item">
