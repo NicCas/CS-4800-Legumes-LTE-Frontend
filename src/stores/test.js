@@ -1,74 +1,14 @@
 import React from "react";
-// Libraries for react/boostrap grids https://react-bootstrap.github.io/layout/grid/
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-// Libraries for react/boostrap cards and card decks https://react-bootstrap.netlify.app/components/cards/#cards
 import Card from 'react-bootstrap/Card'
 import CardDeck from 'react-bootstrap/CardDeck'
-
 import "./StorePage.css";
 import backsplash from "../assets/backsplash_placeholder.png";
 import item from "../assets/item_placeholder.png";
+import testUtils from "react-dom/test-utils";
 
-// This is the function for building the store info bar including name, rating, address, and nav pills
-function InfoBar() {
-  return(
-    <ul class="nav nav-pills flex-column" id="test-pills">
-      <h1></h1>
-      <h1></h1>
-      <h2>Store Name</h2>
-
-      <div class="rating">
-        <input type="radio" name="rating" value="5" id="5"></input>
-        <label for="5">☆</label>
-        <input type="radio" name="rating" value="4" id="4"></input>
-        <label for="4">☆</label>
-        <input type="radio" name="rating" value="3" id="3"></input>
-        <label for="3">☆</label>
-        <input type="radio" name="rating" value="2" id="2"></input>
-        <label for="2">☆</label>
-        <input type="radio" name="rating" value="1" id="1"></input>
-        <label for="1">☆</label>
-      </div>
-
-      <p>
-        Street<br></br>
-        City<br></br>
-        State<br></br>
-        Zipcode<br></br>
-        Phone Number
-      </p>
-
-      <h3>Categories</h3>
-      <li class="nav-item pill">
-        <a class="nav-link active" href="#Category1">
-          Category 1
-        </a>
-      </li>
-      <li class="nav-item pill">
-        <a class="nav-link" href="#Category2">
-          Category 2
-        </a>
-      </li>
-      <li class="nav-item pill">
-        <a class="nav-link" href="#Category3">
-          Category 3
-        </a>
-      </li>
-      <li class="nav-item pill">
-        <a class="nav-link" href="#Category4">
-          Category 4
-        </a>
-      </li>
-    </ul>   
-  )
-}
-
-// This function builds each individual item card including image, name, price, buy button, and stock #
 function ItemCards() {
   return(
-    <Card style={{ width: '18rem' }}>   
+    <Card style={{ width: '10rem' }}>   
       <Card.Img 
         variant="top" 
         id="item-icon" 
@@ -91,73 +31,150 @@ function ItemCards() {
   )
 }
 
-// The main function, this conatins the grid and calls the other functions
-function StorePage() {
+
+function Store() {
+  var test = [1,2,3,4,5,6,7,8,9,10];
   return (
     <div id="store-page">
 
-      <Container md={{ fluid: true }} lg={{ fluid: true }}> {/* in theory this shoul get everything to stretch to the edges of the window for medium and large screens*/}
-        <Row>
-          <Col xs={1}>
-            <InfoBar />
-          </Col>
+      <div id="store-header" class="store-wrapper">
+        <h3 class="store-title">Shop Local!</h3>
+      </div>
 
-          <Col>
-              <h1>Category Name</h1> 
-          </Col>
-          <Col xs={6}>
-            
-             
-            <Row>
-              <CardDeck>
-                <ItemCards />
-                <ItemCards />
-                <ItemCards />
-                <ItemCards />
-                <ItemCards />
-              </CardDeck>
-              </Row>
-           
-          </Col>
-        </Row>
-      </Container>
+      <div class="store-grid-container">
+        <div id="left-column">
+          <div id="store-info" class="store-grid-item">
+            <img src={backsplash} id="backsplash"></img>
 
-      {/* This is older code with the previous html/bootsrap grid in tact*/}
-      {/*
-      <div class="container-fluid">
-        <div class="row">
-            <nav class="col-sm-3 col-4" id="myScrollspy">
-                <InfoBar />
-            </nav>
-            <div class="col">
+            <div class="info-block" id="info-title">
+            {/*<h2>{this.state.store.Store_Name}</h2>*/}
+            <h2>Store Name</h2>
 
-                <div class ="row">
-                <CardDeck>
-                    <ItemCards />
-                    <ItemCards />
-                    <ItemCards />
-                    <ItemCards />
-                    <ItemCards />
-                </CardDeck>
-                </div>
 
-                <div class ="row">
-                <CardDeck>
-                    <ItemCards />
-                    <ItemCards />
-                    <ItemCards />
-                    <ItemCards />
-                    <ItemCards />
-                </CardDeck>
-                </div>
+            <div class="rating">
+              <input
+                type="radio"
+                name="rating"
+                value="5"
+                id="5"
+                disabled="true"
+              ></input>
+              <label for="5">☆</label>
+              <input
+                type="radio"
+                name="rating"
+                value="4"
+                id="4"
+                checked=""
+                disabled="true"
+              ></input>
+              <label for="4">☆</label>
+              <input
+                type="radio"
+                name="rating"
+                value="3"
+                id="3"
+                checked=""
+                disabled="true"
+              ></input>
+              <label for="3">☆</label>
+              <input
+                type="radio"
+                name="rating"
+                value="2"
+                id="2"
+                checked=""
+                disabled="true"
+              ></input>
+              <label for="2">☆</label>
+              <input
+                type="radio"
+                name="rating"
+                value="1"
+                id="1"
+                checked="checked"
+                disabled="false"
+              ></input>
+              <label for="1">☆</label>
+            </div>
+{/*}
+            <p>
+              {this.state.store.Address_Street}
+              <br></br>
+              {this.state.store.Address_City}
+              <br></br>
+              {this.state.store.Address_State}
+              <br></br>
+              {this.state.store.Address_Zipcode}
+              <br></br>
+              {this.state.store.Phone_Number}
+            </p>
+  */}
+            <p>
+              Address
+              <br></br>
+              City
+              <br></br>
+              State
+              <br></br>
+              Zipcode
+              <br></br>
+              111-111-1111
+            </p>
 
             </div>
+            <div class="info-block">
+              <h3>Item Categories</h3>
+              <p>Category</p>
+              <p>Category</p>
+              <p>Category</p>
+              <p>Category</p>
+              <p>Category</p>
             </div>
+          </div>
+          
         </div>
-      */}
 
+        <div id="recent-order" class="store-grid-item">
+          <h3>Category</h3>
+          <table>
+            <tr>
+              <CardDeck>
+                {test.map(function(index){
+                  <td><ItemCards /></td>
+                })}
+              </CardDeck>
+            </tr>
+          </table>
+
+          <h3>Category</h3>
+          <table>
+            <tr>
+              <CardDeck>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+                <td><ItemCards /></td>
+              </CardDeck>
+            </tr>
+          </table>
+          
+        </div>
+      </div>
+      <div id="extra-space-store"></div>
     </div>
   );
 }
 
-export default StorePage;
+export default Store;
