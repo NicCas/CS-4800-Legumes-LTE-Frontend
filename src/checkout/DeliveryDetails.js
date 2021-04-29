@@ -29,7 +29,7 @@ export default class DeliveryDetails extends React.Component {
                 <h1>Step 1: Delivery Details</h1>
                 <h2>Delivery Address</h2>
                 <Form>
-                    <Form.Group controlId="ShipStreet">
+                    <Form.Group>
                         <Form.Label>Street</Form.Label>
                         <Form.Control
                             id="Shipping_Street"
@@ -40,7 +40,7 @@ export default class DeliveryDetails extends React.Component {
                             onChange={this.props.handleChange} 
                         />
                     </Form.Group>
-                    <Form.Group controlId="ShipCity">
+                    <Form.Group>
                         <Form.Label>City</Form.Label>
                         <Form.Control 
                             id="Shipping_City"
@@ -51,7 +51,7 @@ export default class DeliveryDetails extends React.Component {
                             onChange={this.props.handleChange}
                         />
                     </Form.Group>
-                    <Form.Group controlId="ShipState">
+                    <Form.Group>
                         <Form.Label>State</Form.Label>
                         <Form.Control 
                             id="Shipping_State"
@@ -62,7 +62,7 @@ export default class DeliveryDetails extends React.Component {
                             onChange={this.props.handleChange}
                         />
                     </Form.Group>
-                    <Form.Group controlId="ShipZIP">
+                    <Form.Group>
                         <Form.Label>ZIP Code</Form.Label>
                         <Form.Control 
                             id="Shipping_ZIP"
@@ -73,7 +73,7 @@ export default class DeliveryDetails extends React.Component {
                             onChange={this.props.handleChange}
                         />
                     </Form.Group>
-                    <Form.Group controlId="Instructions">
+                    <Form.Group>
                         <Form.Label>Delivery Instructions</Form.Label>
                         <Form.Control 
                             id="Instructions"
@@ -87,7 +87,7 @@ export default class DeliveryDetails extends React.Component {
                 </Form>
                 <h2>Select a Handler</h2>
                 <Form>
-                    <Form.Group controlId="Handler">
+                    <Form.Group>
                         {this.state.handlers.map((handler) => (
                             <Form.Check
                                 type='radio'
