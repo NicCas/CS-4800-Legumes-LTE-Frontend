@@ -116,6 +116,7 @@ get previousButton(){
             Billing_State,
             Billing_ZIP
          } = this.state
+         //alert(`${JSON.parse(Handler).Handler_ID}`)
       }
 
     componentDidMount(){
@@ -182,7 +183,6 @@ get previousButton(){
             <div id="checkout-page">
                 <h1>Checkout</h1>
                 <p>If you have ordered with us before, Chickpea will prefill these fields with your personal information.</p>
-                <form onSubmit={this.handleSubmit}>
                     <DeliveryDetails
                         step = {this.state.step}
                         handleChange = {this.handleChange}
@@ -227,7 +227,6 @@ get previousButton(){
                     <div>
                         <button class="btn float-right" type="submit" onClick={()=>this.placeOrder()}>Place Order</button>
                     </div>}
-                </form>
             </div>
         )
     }
