@@ -171,7 +171,18 @@ get previousButton(){
 
     placeOrder(){
       axios(`https://chickpeaapi.glitch.me/checkout`,{
-        method: 'post'
+        method: 'post',
+        data: {
+          Shipping_Street: this.state.Shipping_Street,
+          Shipping_City: this.state.Shipping_City,
+          Shipping_State: this.state.Shipping_State,
+          Shipping_ZIP: this.state.Shipping_ZIP,
+          Billing_Street: this.state.Billing_Street,
+          Billing_City: this.state.Billing_City,
+          Billing_State: this.state.Billing_State,
+          Billing_ZIP: this.state.Billing_ZIP,
+          Handler_ID: JSON.parse(this.state.Handler).Handler_ID
+        }
       })
         .then((res) => {
           console.log(res);
