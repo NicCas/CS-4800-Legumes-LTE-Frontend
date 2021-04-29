@@ -168,7 +168,14 @@ get previousButton(){
         })
     }
 
-    // have event listeners
+    placeOrder(){
+      axios(`https://chickpeaapi.glitch.me/checkout`,{
+        method: 'post'
+      })
+        .then((res) => {
+          console.log(res);
+        })
+    }
 
     render() {
         return (
@@ -218,7 +225,7 @@ get previousButton(){
                     {this.nextButton}
                     {this.state.step == 3 &&
                     <div>
-                        <button class="btn float-right" type="submit">Place Order</button>
+                        <button class="btn float-right" type="submit" onClick={()=>this.placeOrder()}>Place Order</button>
                     </div>}
                 </form>
             </div>
