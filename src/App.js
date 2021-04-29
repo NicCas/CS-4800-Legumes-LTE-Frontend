@@ -33,9 +33,7 @@ function App() {
             <Route path="/handbasket" component={Handbasket} />
             <Route path="/checkout" component={Checkout} />
             <Route path="/account">
-              <Header />
               <Account />
-              <Footer />
             </Route>
             <Route path="/">
               <Home />

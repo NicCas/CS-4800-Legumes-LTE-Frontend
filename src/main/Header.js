@@ -12,6 +12,7 @@ import axios from "axios";
 export default class Header extends React.Component {
   state = {
     username: "Account",
+    account_link: "/signin"
   };
 
   componentDidMount() {
@@ -21,9 +22,9 @@ export default class Header extends React.Component {
         const data = res.data;
         console.log(data);
         if (data.loggedIn) {
-          this.setState({ username: data.Username });
+          this.setState({ username: data.Username, account_link: "/account"});
         } else {
-          this.setState({ username: "Account" });
+          this.setState({ username: "Account", account_link: "/signin" });
         }
       })
       .catch(function (error) {
@@ -65,7 +66,7 @@ export default class Header extends React.Component {
                 </Link>
               </li>
               <li class="nav-item">
-                <Link to="/signin" class="nav-link">
+                <Link to={this.state.account_link} class="nav-link">
                   <div class="header-wrapper">
                     <img src={profile} class="header-image"></img>
                     <b>{this.state.username}</b>
