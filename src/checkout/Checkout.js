@@ -18,21 +18,22 @@ export default class Checkout extends React.Component {
 
         this.state = {
             step: 1,
-            Shipping_Street: "Street Name",
-            Shipping_City: "City name",
-            Shipping_State: "New Spork",
-            Shipping_ZIP: "12345",
+            Shipping_Street: "",
+            Shipping_City: "",
+            Shipping_State: "",
+            Shipping_ZIP: "",
             Handler: {},
-            Delivery_Instructions: "none",
-            Card_Number: "1234...",
-            Card_Name: "name",
-            CVV: "123",
+            Delivery_Instructions: "",
+            Card_Number: "",
+            Card_Name: "",
+            CVV: "",
             Exp_Date: '',
-            Billing_Street: "Street Name",
-            Billing_City: "City name",
-            Billing_State: "New Spork",
-            Billing_ZIP: "12345",
+            Billing_Street: "",
+            Billing_City: "",
+            Billing_State: "",
+            Billing_ZIP: "",
         }
+        this.componentDidMount = this.componentDidMount.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this._next = this._next.bind(this);
         this._prev = this._prev.bind(this);
@@ -118,7 +119,51 @@ get previousButton(){
       }
 
     componentDidMount(){
+      let currentComponent = this;
+      axios.get(`https://chickpeaapi.glitch.me/user/account-details`)
+        .then((res) => {
+          const data = res.data;
+          var shipping_addr = {};
+          var billing_addr = {};
+          var payment = {};
+          // getting addresses
+          for(var address of data.addresses){
+            if(address.Is_Billing){
+              billing_addr.Street = address.Street;
+              billing_addr.City = address.City;
+              billing_addr.State = address.State;
+              billing_addr.ZIP = address.Zip_Code;
+            }
+            if(address.Is_Shipping){
+              shipping_addr.Street = address.Street;
+              shipping_addr.City = address.City;
+              shipping_addr.State = address.State;
+              shipping_addr.ZIP = address.Zip_Code;
+            }
+          }
 
+          // getting payment
+          payment.Card_Name = data.payments[0].Card_Name;
+          payment.Card_Number = data.payments[0].Card_Num;
+          payment.CVV = data.payments[0].CVV;
+          payment.Exp_Date = data.payments[0].Exp_Date;
+
+          // setting the state
+          currentComponent.setState({
+            Shipping_Street: shipping_addr.Street,
+            Shipping_City: shipping_addr.City,
+            Shipping_State: shipping_addr.State,
+            Shipping_ZIP: shipping_addr.ZIP,
+            Card_Number: payment.Card_Number.toString(),
+            Card_Name: payment.Card_Name,
+            CVV: payment.CVV,
+            Exp_Date: payment.Exp_Date,
+            Billing_Street: billing_addr.Street,
+            Billing_City: billing_addr.City,
+            Billing_State: billing_addr.State,
+            Billing_ZIP: billing_addr.ZIP
+          })
+        })
     }
 
     // have event listeners
