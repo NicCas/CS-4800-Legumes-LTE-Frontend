@@ -12,7 +12,7 @@ import axios from "axios";
 export default class Header extends React.Component {
   state = {
     username: "Account",
-    account_link: "/signin"
+    account_link: "/signin",
   };
 
   componentDidMount() {
@@ -22,7 +22,7 @@ export default class Header extends React.Component {
         const data = res.data;
         console.log(data);
         if (data.loggedIn) {
-          this.setState({ username: data.Username, account_link: "/account"});
+          this.setState({ username: data.Username, account_link: "/account" });
         } else {
           this.setState({ username: "Account", account_link: "/signin" });
         }
@@ -83,9 +83,11 @@ export default class Header extends React.Component {
                   type="text"
                   placeholder="Search"
                 ></input>
-                <button class="btn" type="submit">
-                  Search
-                </button>
+                <Link to="/search" class="nav-link">
+                  <button class="btn" type="submit">
+                    Search
+                  </button>
+                </Link>
               </form>
               <li class="nav-item">
                 <Link to="/handbasket" class="nav-link">
