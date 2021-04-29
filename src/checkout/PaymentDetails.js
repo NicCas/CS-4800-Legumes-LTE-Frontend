@@ -59,7 +59,7 @@ export default class PaymentDetails extends React.Component {
                             id="Exp_Date"
                             name="Exp_Date"
                             type="text" 
-                            placeholder="xx/xx"
+                            placeholder="mm/yy"
                             value={this.props.Exp_Date}
                             onChange={this.props.handleChange}
                         />

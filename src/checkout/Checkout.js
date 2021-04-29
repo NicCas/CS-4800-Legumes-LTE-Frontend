@@ -22,11 +22,12 @@ export default class Checkout extends React.Component {
             Shipping_City: "City name",
             Shipping_State: "New Spork",
             Shipping_ZIP: "12345",
-            Handler_ID: null,
+            Handler: {},
+            Delivery_Instructions: "none",
             Card_Number: "1234...",
             Card_Name: "name",
             CVV: "123",
-            Exp_Date: 'idk',
+            Exp_Date: '',
             Billing_Street: "Street Name",
             Billing_City: "City name",
             Billing_State: "New Spork",
@@ -103,7 +104,8 @@ get previousButton(){
             Shipping_City, 
             Shipping_State, 
             Shipping_ZIP,
-            Handler_ID,
+            Handler,
+            Delivery_Instructions,
             Card_Name,
             Card_Number,
             CVV,
@@ -113,11 +115,6 @@ get previousButton(){
             Billing_State,
             Billing_ZIP
          } = this.state
-         alert(`
-         ${Shipping_Street}\n${Shipping_City}\n${Shipping_State}\n${Shipping_ZIP}\n
-         ${Handler_ID}\n${Card_Name}\n${Card_Number}\n${CVV}\n${Exp_Date}\n
-         ${Billing_Street}\n${Billing_City}\n${Billing_State}\n${Billing_ZIP}\n
-         `)
       }
 
     componentDidMount(){
@@ -130,6 +127,7 @@ get previousButton(){
         return (
             <div id="checkout-page">
                 <h1>Checkout</h1>
+                <p>If you have ordered with us before, Chickpea will prefill these fields with your personal information.</p>
                 <form onSubmit={this.handleSubmit}>
                     <DeliveryDetails
                         step = {this.state.step}
@@ -138,7 +136,7 @@ get previousButton(){
                         Shipping_City = {this.state.Shipping_City}
                         Shipping_State = {this.state.Shipping_State}
                         Shipping_ZIP = {this.state.Shipping_ZIP}
-                        Handler_ID = {this.state.Handler_ID}
+                        Handler = {this.state.Handler}
                     />
                     <PaymentDetails 
                         step = {this.state.step}
@@ -158,7 +156,8 @@ get previousButton(){
                       Shipping_City = {this.state.Shipping_City}
                       Shipping_State = {this.state.Shipping_State}
                       Shipping_ZIP = {this.state.Shipping_ZIP}
-                      Handler_ID = {this.state.Handler_ID}
+                      Handler = {this.state.Handler}
+                      Delivery_Instructions = {this.state.Delivery_Instructions}
                       Card_Name = {this.state.Card_Name}
                       Card_Number = {this.state.Card_Number}
                       CVV = {this.state.CVV}
@@ -172,7 +171,7 @@ get previousButton(){
                     {this.nextButton}
                     {this.state.step == 3 &&
                     <div>
-                        <button class="btn float-right" type="submit">Submit</button>
+                        <button class="btn float-right" type="submit">Place Order</button>
                     </div>}
                 </form>
             </div>

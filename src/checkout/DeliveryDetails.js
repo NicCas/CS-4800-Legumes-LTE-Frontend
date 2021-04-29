@@ -73,17 +73,28 @@ export default class DeliveryDetails extends React.Component {
                             onChange={this.props.handleChange}
                         />
                     </Form.Group>
+                    <Form.Group controlId="Instructions">
+                        <Form.Label>Delivery Instructions</Form.Label>
+                        <Form.Control 
+                            id="Instructions"
+                            name="Instructions"
+                            type="text" 
+                            placeholder="don't doorbell, etc"
+                            value={this.props.Delivery_Instructions}
+                            onChange={this.props.handleChange}
+                        />
+                    </Form.Group>
                 </Form>
                 <h2>Select a Handler</h2>
                 <Form>
-                    <Form.Group controlId="HandlerID">
+                    <Form.Group controlId="Handler">
                         {this.state.handlers.map((handler) => (
                             <Form.Check
                                 type='radio'
-                                id='Handler_ID'
-                                name="Handler_ID"
+                                id='Handler'
+                                name="Handler"
                                 label={handler.Name}
-                                value={handler.Handler_ID}
+                                value={JSON.stringify(handler)}
                                 onChange={this.props.handleChange}
                             />
                         ))} 
