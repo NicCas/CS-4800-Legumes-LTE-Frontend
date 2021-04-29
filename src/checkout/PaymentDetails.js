@@ -20,7 +20,7 @@ export default class PaymentDetails extends React.Component {
                 <h1>Step 2: Payment Information</h1>
                 <h2>Card Information</h2>
                 <Form>
-                    <Form.Group controlId="CardNum">
+                    <Form.Group>
                         <Form.Label>Card Number</Form.Label>
                         <Form.Control
                             id="Card_Number"
@@ -31,7 +31,7 @@ export default class PaymentDetails extends React.Component {
                             onChange={this.props.handleChange} 
                         />
                     </Form.Group>
-                    <Form.Group controlId="CardName">
+                    <Form.Group>
                         <Form.Label>Name on Card</Form.Label>
                         <Form.Control 
                             id="Card_Name"
@@ -42,7 +42,7 @@ export default class PaymentDetails extends React.Component {
                             onChange={this.props.handleChange}
                         />
                     </Form.Group>
-                    <Form.Group controlId="CVV">
+                    <Form.Group>
                         <Form.Label>CVV</Form.Label>
                         <Form.Control 
                             id="CVV"
@@ -53,7 +53,7 @@ export default class PaymentDetails extends React.Component {
                             onChange={this.props.handleChange}
                         />
                     </Form.Group>
-                    <Form.Group controlId="Exp_Date">
+                    <Form.Group>
                         <Form.Label>Expiration Date</Form.Label>
                         <Form.Control 
                             id="Exp_Date"
@@ -67,7 +67,7 @@ export default class PaymentDetails extends React.Component {
                 </Form>
                 <h2>Billing Address</h2>
                 <Form>
-                    <Form.Group controlId="BillStreet">
+                    <Form.Group>
                         <Form.Label>Street</Form.Label>
                         <Form.Control
                             id="Billing_Street"
@@ -78,7 +78,7 @@ export default class PaymentDetails extends React.Component {
                             onChange={this.props.handleChange} 
                         />
                     </Form.Group>
-                    <Form.Group controlId="BillCity">
+                    <Form.Group>
                         <Form.Label>City</Form.Label>
                         <Form.Control 
                             id="Billing_City"
@@ -89,7 +89,7 @@ export default class PaymentDetails extends React.Component {
                             onChange={this.props.handleChange}
                         />
                     </Form.Group>
-                    <Form.Group controlId="BillState">
+                    <Form.Group>
                         <Form.Label>State</Form.Label>
                         <Form.Control 
                             id="Billing_State"
@@ -100,7 +100,7 @@ export default class PaymentDetails extends React.Component {
                             onChange={this.props.handleChange}
                         />
                     </Form.Group>
-                    <Form.Group controlId="BillZIP">
+                    <Form.Group>
                         <Form.Label>ZIP Code</Form.Label>
                         <Form.Control 
                             id="Billing_ZIP"
