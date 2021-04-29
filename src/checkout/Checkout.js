@@ -177,6 +177,7 @@ get previousButton(){
           Shipping_City: this.state.Shipping_City,
           Shipping_State: this.state.Shipping_State,
           Shipping_ZIP: this.state.Shipping_ZIP,
+          Delivery_Instructions: this.state.Delivery_Instructions,
           Billing_Street: this.state.Billing_Street,
           Billing_City: this.state.Billing_City,
           Billing_State: this.state.Billing_State,
@@ -201,6 +202,7 @@ get previousButton(){
                         Shipping_City = {this.state.Shipping_City}
                         Shipping_State = {this.state.Shipping_State}
                         Shipping_ZIP = {this.state.Shipping_ZIP}
+                        Delivery_Instructions = {this.state.Delivery_Instructions}
                         Handler = {this.state.Handler}
                     />
                     <PaymentDetails 

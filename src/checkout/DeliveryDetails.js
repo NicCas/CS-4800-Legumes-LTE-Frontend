@@ -76,10 +76,10 @@ export default class DeliveryDetails extends React.Component {
                     <Form.Group>
                         <Form.Label>Delivery Instructions</Form.Label>
                         <Form.Control 
-                            id="Instructions"
-                            name="Instructions"
+                            id="Delivery_Instructions"
+                            name="Delivery_Instructions"
                             type="text" 
-                            placeholder="don't doorbell, etc"
+                            placeholder="don't doorbell"
                             value={this.props.Delivery_Instructions}
                             onChange={this.props.handleChange}
                         />
