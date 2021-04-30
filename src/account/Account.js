@@ -9,48 +9,74 @@ axios.defaults.withCredentials = true;
 export default class Account extends React.Component {
   state = {
     customer: {},
-    addresses: [], 
-    billings: [], 
-    shippings: [], 
-    deliveries: [], 
-    delivs: [], 
-    transporting: [], 
-    transits: []
+    addresses: [], billings: [], shippings: [], deliveries: [], delivs: [], transporting: [], transits: [], deliv_items: [], favs: [],
+    Handlers: [], handler: ""
   };
 
   componentDidMount() {
+
+    axios.get(`https://chickpeaapi.glitch.me/handler`)
+    .then((res) => {
+      const data = res.data;
+      this.setState({Handlers: data});
+    }) 
+    .catch(function (error) {
+      console.log(error);
+    });
+    
+  
     axios
-      .get(`https://chickpeaapi.glitch.me/user/account-details`, { withCredentials: true })
+      .get(`https://chickpeaapi.glitch.me/user/account-details`, /*`https://chickpeaapi.glitch.me/stores`,*/ { withCredentials: true })
       .then((res) => {
         const data = res.data;
         var billing_addrs = [];
         var shipping_addrs = [];
-        var shipped_order_nos = [];
-        var delivering_order_nos = [];
-        console.log(data);
-        this.setState({ customer: data.customer_info });
-        for(var i = 0; i < data.addresses.length; i++){
-          if(data.addresses[i].Is_Billing == true)
-            billing_addrs.push(data.addresses[i]);
-          if(data.addresses[i].Is_Shipping == true)
-            shipping_addrs.push(data.addresses[i]);
-        }
-        this.setState({billings: billing_addrs[0]});
-        this.setState({shippings: shipping_addrs[0]});
-        for(var i = 0; i < data.deliveries.length; i++){
-          if(deliveries[i].Delivered == true)
-            shipped_order_nos.push(data.deliveries[i]);
-          if(deliveries[i].Delivered == false)
-            delivering_order_nos.push(data.deliveries[i]);
-        }
-        this.setState({ delivs: shipped_order_nos[0]});
-        this.setState({ transporting: delivering_order_nos[0]});
+        var order_nos = [];
+        var delivered_items = [];
+        var item_props = [];
+        var delivery_handler = ""
+          console.log(data);
+          this.setState({ customer: data.customer_info });
+          for(var i = 0; i < data.addresses.length; i++){
+            if(data.addresses[i].Is_Billing == true)
+              billing_addrs.push(data.addresses[i]);
+            if(data.addresses[i].Is_Shipping == true)
+              shipping_addrs.push(data.addresses[i]);
+          }
+          this.setState({billings: billing_addrs[0]});
+          this.setState({shippings: shipping_addrs[0]});
+          for(var i = 0; i < data.deliveries.length; i++){
+              order_nos.push(data.deliveries[i]);
+              
+            }
+          this.setState({ delivs: order_nos[0], transporting: order_nos[1]});
+
+          //items that have been delivered
+          /*for(var i = 0; i < data.deliveries.Purchased_Items.length; i++){
+             delivered_items.push(data.deliveries.Purchased_Items);
+             
+          }
+          this.setState({deliv_items: delivered_items[0]});
+
+          //Favorites
+          for(var i = 0; i < data.favorites.length; i++){
+            for(var j = 0; j < data.favorites.Favorite_Items.length; j++){
+              item_props.push(data.favorites[i].Favorite_Items[j]);
+            }
             
+          }
+          this.setState({favs: item_props[0]});*/
+          for(var a_handler in Handlers){
+              if(a_handler.Handler_ID == transporting.Handler_ID)
+                delivery_handler = a_handler.Handler_Name;
+          }
+          this.setState({handler: delivery_handler});  
       })
       .catch(function (error) {
         console.log(error);
       });
   }
+
   handleLogout(){
     console.log("I am logging out");
     axios.get(`https://chickpeaapi.glitch.me/login/logout`, {withCredentials: true});
@@ -83,11 +109,11 @@ export default class Account extends React.Component {
                 <p>Shipping Address </p>
               </div>
               <div class="info-block">
-                <div>{this.state.customer.Username}</div>
+                
                 <p> {this.state.customer.Username} </p>
-                <p>User Email</p>
-                <p>User BillingAddress</p>
-                <p>User ShippingAddress</p>
+                <p> {this.state.customer.Email} </p>
+                <p>{this.state.billings.Street}, {this.state.billings.City}, {this.state.billings.State}, {this.state.billings.Zip_Code} </p>
+                <p>{this.state.shippings.Street}, {this.state.shippings.City}, {this.state.shippings.State}, {this.state.shippings.Zip_Code}</p>
               </div>
             </div>
             <div id="favorites" class="account-grid-item">
@@ -99,7 +125,7 @@ export default class Account extends React.Component {
                   <th class="price-column">Price</th>
                 </tr>
                 <tr>
-                  <td>Item</td>
+                  <td> this.state.favs.Item_Name</td>
                   <td>Store</td>
                   <td>Price</td>
                 </tr>
@@ -112,9 +138,9 @@ export default class Account extends React.Component {
               <p>Order Number: #000000</p>
               <ProgressBar animated variant="warning" now={20} />
               <p>Order Staus: Status</p>
-              <p>Order Time: 00:00</p>
-              <p>Handler: Handler Name</p>
-              <p>Delivery Address: User Address</p>
+              <p>Order Time: {this.state.transporting.Date}</p>
+              <p>Handler: {this.state.handler} </p>
+              <p>Delivery Address: {this.state.shippings.Street}, {this.state.shippings.City}, {this.state.shippings.State}, {this.state.shippings.Zip_Code}</p>
             </div>
             <table>
               <tr>
@@ -133,11 +159,11 @@ export default class Account extends React.Component {
               </tr>
             </table>
             <div id="price-info">
-              <p>Tax: $0.00</p>
-              <p>Delivery Fee: $0.00</p>
-              <p>Tip: $0.00</p>
+              <p>Tax: ${(this.state.transporting.Total_Cost * .0825).toFixed(2)} </p>
+              <p>Delivery Fee: $2.00 </p>
+              <p>Tip: $2.50 </p>
               <br></br>
-              <p>Total Price: $0.00</p>
+              <p>Total Price: ${(this.state.transporting.Total_Cost + (this.state.transporting.Total_Cost * .0825) + 4.50).toFixed(2)} </p>
             </div>
           </div>
         </div>
@@ -152,11 +178,14 @@ export default class Account extends React.Component {
               <th>Items</th>
             </tr>
             <tr>
-              <td>Order Number</td>
-              <td>Date</td>
-              <td>Total Cost</td>
-              <td>Deliver Address</td>
-              <td>Items</td>
+              <td>{this.state.delivs.Delivery_ID}</td>
+              <td> {this.state.delivs.Date} </td>
+              <td>{this.state.delivs.Total_Cost}</td>
+              <td> {this.state.shippings.Street},
+               {this.state.shippings.City}, 
+               {this.state.shippings.State},
+                {this.state.shippings.Zip_Code} </td>
+              <td>this.state.deliv_items</td>
             </tr>
           </table>
         </div>
