@@ -9,6 +9,13 @@ axios.defaults.withCredentials = true;
 export default class Account extends React.Component {
   state = {
     customer: {},
+    addresses: [], 
+    billings: [], 
+    shippings: [], 
+    deliveries: [], 
+    delivs: [], 
+    transporting: [], 
+    transits: []
   };
 
   componentDidMount() {
@@ -16,14 +23,34 @@ export default class Account extends React.Component {
       .get(`https://chickpeaapi.glitch.me/user/account-details`, { withCredentials: true })
       .then((res) => {
         const data = res.data;
-        //console.log(data);
-          this.setState({ customer: data.customer_info });
+        var billing_addrs = [];
+        var shipping_addrs = [];
+        var shipped_order_nos = [];
+        var delivering_order_nos = [];
+        console.log(data);
+        this.setState({ customer: data.customer_info });
+        for(var i = 0; i < data.addresses.length; i++){
+          if(data.addresses[i].Is_Billing == true)
+            billing_addrs.push(data.addresses[i]);
+          if(data.addresses[i].Is_Shipping == true)
+            shipping_addrs.push(data.addresses[i]);
+        }
+        this.setState({billings: billing_addrs[0]});
+        this.setState({shippings: shipping_addrs[0]});
+        for(var i = 0; i < data.deliveries.length; i++){
+          if(deliveries[i].Delivered == true)
+            shipped_order_nos.push(data.deliveries[i]);
+          if(deliveries[i].Delivered == false)
+            delivering_order_nos.push(data.deliveries[i]);
+        }
+        this.setState({ delivs: shipped_order_nos[0]});
+        this.setState({ transporting: delivering_order_nos[0]});
+            
       })
       .catch(function (error) {
         console.log(error);
       });
   }
-
   handleLogout(){
     console.log("I am logging out");
     axios.get(`https://chickpeaapi.glitch.me/login/logout`, {withCredentials: true});
