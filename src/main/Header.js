@@ -76,19 +76,33 @@ export default class Header extends React.Component {
             </ul>
 
             <ul class="navbar-nav ml-auto">
+
+
+
+
               <form class="form-inline" action="#">
                 <img src={search} class="header-image"></img>
                 <input
                   class="form-control mr-sm-2"
                   type="text"
                   placeholder="Search"
+                  id="query"
                 ></input>
-                <Link to="/search" class="nav-link">
+                
+                {/* // document.getElementById("query").value should send the input from the search bar, but it is currently breaking the code
+                  * I need some way for allowing it to be null
+                
+                <Link to={"/search/" + document.getElementById("query").value} class="nav-link">     */}
+                <Link to={"/search/" } class="nav-link">
                   <button class="btn" type="submit">
                     Search
                   </button>
                 </Link>
               </form>
+
+
+
+
               <li class="nav-item">
                 <Link to="/handbasket" class="nav-link">
                   <div class="header-wrapper">
