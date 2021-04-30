@@ -167,7 +167,7 @@ export default class Store extends React.Component {
                       this.state.items[category_name]
                     or something similar to that  
                   */
-                  <a class="cat" href="#cat1">
+                  <a class="cat" href={`#${category_name}`}>
                     <p>{category_name}</p>
                   </a>
               ))}
@@ -177,58 +177,57 @@ export default class Store extends React.Component {
   
           
           <div id="items-list">
-            {/* Beginning of items box, this will be a loop per category 
+            {/* Beginning of items box, this will be a loop per category*/}
 
             {Object.keys(this.state.items).map((category_name) => (
-               <a class="anchor" id="cat1"></a> 
+              <div>
+               <a class="anchor" id={`${category_name}`}></a>
                <div class="items-grid-cont">
-                  <h3>{category_name}</h3>
-                  
+               <div class="inner-grid-cont">
+                <h3>{category_name}</h3>
+                {this.state.items[category_name].map((product) => (
+                <div class="items-grid-item">
+                <Card style={{ width: "10rem" }}>
+                <Card.Img
+                  variant="top"
+                  id="item-icon"
+                  src={product.Image_URL} 
+                  width="100px"
+                  height="100px"
+                  alt="Placeholder Item Picture"
+                />{/* Change item to an alt if database image does not exist */}
+
+                  <Card.Body>
+                    <Card.Title>{product.Item_Name}</Card.Title>
+                    <Card.Text>${product.Price}</Card.Text>
+                  {/*
+                          <InputGroup className="mb-3">
+                            <InputGroup.Append>
+                              <Button variant="outline-secondary">Buy</Button>
+                            </InputGroup.Append>
+                            <FormControl
+                              placeholder="Number of Items"
+                              aria-label="Number of Items"
+                              aria-describedby="basic-addon2"
+                            />
+                          </InputGroup>
+                  */}
+                    <button class="btn">Buy</button>
+                    
+                  </Card.Body>
+
+                  <Card.Footer>
+                    <small className="text-muted">Stock: {product.Stock}</small>
+                  </Card.Footer>
+                </Card>
+                </div>
+                ))}
+               </div>
+                </div>
+              </div>
+               
               ))}
-*/}
-            <a class="anchor" id="cat1"></a> {/* What the category button links to, anchor provides buffer from header, id is the same as the corresponding button */}
-            <div class="items-grid-cont">
-              
-              <h3>Category</h3>
-              <div class="inner-grid-cont">
-                {/* This will be a loop per item */}
-                <div class="items-grid-item">
-                  <ItemCards></ItemCards>
-                </div>
-                <div class="items-grid-item">
-                  <ItemCards></ItemCards>
-                </div>
-                <div class="items-grid-item">
-                  <ItemCards></ItemCards>
-                </div>
-                <div class="items-grid-item">
-                  <ItemCards></ItemCards>
-                </div>
-                <div class="items-grid-item">
-                  <ItemCards></ItemCards>
-                </div>
-                <div class="items-grid-item">
-                  <ItemCards></ItemCards>
-                </div>
-              </div>
-            </div>
-  
-            {/* For dynamic data remove this section */}
-            <a class="anchor" id="cat2"></a> 
-            <div class="items-grid-cont" id="cat2">
-              <h3>Category</h3>
-              <div class="inner-grid-cont">
-                <div class="items-grid-item">
-                  <ItemCards></ItemCards>
-                </div>
-                <div class="items-grid-item">
-                  <ItemCards></ItemCards>
-                </div>
-                <div class="items-grid-item">
-                  <ItemCards></ItemCards>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
         <div id="extra-space-store"></div>
