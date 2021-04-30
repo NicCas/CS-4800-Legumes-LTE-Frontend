@@ -32,6 +32,22 @@ export default class Header extends React.Component {
       });
   }
 
+  componentDidMount() {
+    const script = document.createElement("script");
+    script.src = "../stores/Search.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }
+
+  sendSearch() {
+    axios("https://chickpeaapi.glitch.me/search/query", {
+      method: "post",
+      data: {
+        searchQuery: document.getElementById("query").value,
+      },
+    });
+  }
+
   render() {
     return (
       <div id="header_page">
@@ -76,10 +92,6 @@ export default class Header extends React.Component {
             </ul>
 
             <ul class="navbar-nav ml-auto">
-
-
-
-
               <form class="form-inline" action="#">
                 <img src={search} class="header-image"></img>
                 <input
@@ -88,20 +100,21 @@ export default class Header extends React.Component {
                   placeholder="Search"
                   id="query"
                 ></input>
-                
+
                 {/* // document.getElementById("query").value should send the input from the search bar, but it is currently breaking the code
                   * I need some way for allowing it to be null
                 
                 <Link to={"/search/" + document.getElementById("query").value} class="nav-link">     */}
-                <Link to={"/search/" } class="nav-link">
-                  <button class="btn" type="submit">
+                <Link to={"/search/"} class="nav-link">
+                  <button
+                    class="btn"
+                    type="submit"
+                    onClick={() => this.sendSearch()}
+                  >
                     Search
                   </button>
                 </Link>
               </form>
-
-
-
 
               <li class="nav-item">
                 <Link to="/handbasket" class="nav-link">

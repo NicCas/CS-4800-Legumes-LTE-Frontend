@@ -23,6 +23,7 @@
 #search-title {
   padding-left: 10px;
   display: inline-block;
+  padding-right: 10px;
 }
 
 .search-grid-outer {
@@ -95,4 +96,8 @@ a.anchor-search {
 
 #extra-space-search {
   height: 1px;
+}
+
+#search-cont {
+  font-size: 25px;
 }
