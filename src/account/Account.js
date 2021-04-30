@@ -6,48 +6,7 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 
 axios.defaults.withCredentials = true;
 
-var timeReceived; //new Date('2021-04-29T03:24:00')
-
-// Set the time of the active delivery for calculating the progress bar
-// This should only be called once when the page is rendered
-// This function may be modified to include travering the order array to find the active order
-function setTimeReceived (activeDeliveryInfo){
-  timeReceived = activeDeliveryInfo.Date;
-}
-
-// Calculate the time percentage for the progress bar
-function expectedDeliveryPercentage (){
-  // Get the current time
-  const currentTime = Date.now();
-  console.log(currentTime.toString);
-
-  // Calculate the number of minutes passed since the order was made
-  // Just subtracting returns the time in milliseconds, so the floor of milliseconds/60,000 converts to minutes
-  // For purposes of easy simming the dividing number can be changed to 1,000
-  const timeEllapsed = Math.floor((currentTime - timeReceived)/60000);
-  // Calculate the percentage of an hour that has ellapsed, rounded for nicer numbers
-  const deliveryPercentage = Math.ceil(timeEllapsed / 60 * 100);
-
-  return deliveryPercentage;
-}
-
-function orderStatus (deliveryPercentage) {
-  var status;
-  if (deliveryPercentage < 10){
-
-  } else if (deliveryPercentage < 50){
-    
-  } else if (deliveryPercentage < 60) {
-
-  } else if (deliveryPercentage < 100){
-
-  } else {
-
-  }
-}
-
 export default class Account extends React.Component {
-  
   state = {
     customer: {},
   };
@@ -124,7 +83,7 @@ export default class Account extends React.Component {
             <h3>Current Order</h3>
             <div id="order-info">
               <p>Order Number: #000000</p>
-              <ProgressBar animated variant="warning" now={expectedDeliveryPercentage()} />
+              <ProgressBar animated variant="warning" now={20} />
               <p>Order Staus: Status</p>
               <p>Order Time: 00:00</p>
               <p>Handler: Handler Name</p>

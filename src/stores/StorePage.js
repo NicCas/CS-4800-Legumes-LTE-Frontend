@@ -162,46 +162,33 @@ export default class Store extends React.Component {
               {/* This section should be a dynamic loop */}
               <div id="categories-grid">
                 {/* href needs to be dynamically named, maybe the category title itself?*/}
-                <a class="cat" href="#cat1">
-                  Category
-                </a>
-                <a class="cat" href="#cat2">
-                  Category
-                </a>
-                <a class="cat" href="#">
-                  Category
-                </a>
-                <a class="cat" href="#">
-                  Category
-                </a>
-                <a class="cat" href="#">
-                  Category
-                </a>
-                <a class="cat" href="#">
-                  Category
-                </a>
-                <a class="cat" href="#">
-                  Category
-                </a>
-                <a class="cat" href="#">
-                  Category
-                </a>
+                {Object.keys(this.state.items).map((category_name) => (
+                  /*beginnings of dynamically populating the categories; you might need to access the item arrays using the following:
+                      this.state.items[category_name]
+                    or something similar to that  
+                  */
+                  <a class="cat" href="#cat1">
+                    <p>{category_name}</p>
+                  </a>
+              ))}
               </div>
             </div>
           </div>
   
           
           <div id="items-list">
-            {/* Beginning of items box, this will be a loop per category */}
+            {/* Beginning of items box, this will be a loop per category 
+
+            {Object.keys(this.state.items).map((category_name) => (
+               <a class="anchor" id="cat1"></a> 
+               <div class="items-grid-cont">
+                  <h3>{category_name}</h3>
+                  
+              ))}
+*/}
             <a class="anchor" id="cat1"></a> {/* What the category button links to, anchor provides buffer from header, id is the same as the corresponding button */}
             <div class="items-grid-cont">
-              {Object.keys(this.state.items).map((category_name) => (
-                /*beginnings of dynamically populating the categories; you might need to access the item arrays using the following:
-                    this.state.items[category_name]
-                  or something similar to that  
-                */
-                  <p>{category_name}</p>
-              ))}
+              
               <h3>Category</h3>
               <div class="inner-grid-cont">
                 {/* This will be a loop per item */}
