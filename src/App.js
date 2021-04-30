@@ -13,6 +13,7 @@ const Account = lazy(() => import("./account/Account"));
 const Handbasket = lazy(() => import("./handbasket/HandbasketPage"));
 const Checkout = lazy(() => import("./checkout/Checkout"));
 const Search = lazy(() => import("./stores/Search"));
+const OrderPlaced = lazy(() => import("./checkout/OrderPlaced"));
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             </Route>
             <Route path="/handbasket" component={Handbasket} />
             <Route path="/checkout" component={Checkout} />
+            <Route path="/order-placed" component={OrderPlaced} />
             <Route path="/account">
               <Account />
             </Route>
