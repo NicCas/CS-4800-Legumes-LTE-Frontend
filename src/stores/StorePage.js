@@ -79,6 +79,21 @@ export default class Store extends React.Component {
     //console.log(this.props.match.params);
   }
 
+  addToCart(id, quantity){
+    axios("https://chickpeaapi.glitch.me/cart/add", {
+      withCredentials: true,
+      method: "post",
+      data: {
+        Item_ID: id,
+        Quantity: quantity
+      }
+    })
+    .then((res) => {
+      console.log(res.data);
+      alert(`Added to cart!`);
+    })
+  }
+
   render() {
     return (
       <div id="store-page">
@@ -212,7 +227,7 @@ export default class Store extends React.Component {
                             />
                           </InputGroup>
                   */}
-                    <button class="btn">Buy</button>
+                    <button class="btn" onClick={()=>this.addToCart(product.Item_ID, 1)}>Add to Cart</button>
                     
                   </Card.Body>
 
