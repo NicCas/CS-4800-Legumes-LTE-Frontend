@@ -88,7 +88,7 @@ export default class Account extends React.Component {
         <div id="account-header" class="account-wrapper">
           <div id="name-image">
             <img src={account} class="account-image"></img>
-            <h3 class="account-title">Hello, {this.state.customer.Username}</h3>
+            <h3 class="account-title">Hello, {this.state.customer.Name}</h3>
           </div>
           <div id="logout-button">
             <a href="/home">
