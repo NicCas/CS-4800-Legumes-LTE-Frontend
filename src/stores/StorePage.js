@@ -67,6 +67,7 @@ export default class Store extends React.Component {
         store_id: currentComponent.props.match.params.store_id
       }
     }).then(function(response) {
+      console.log(response);
       const store_data = response.data.store;
       const item_list = response.data.items;
       currentComponent.setState({
@@ -194,6 +195,13 @@ export default class Store extends React.Component {
             {/* Beginning of items box, this will be a loop per category */}
             <a class="anchor" id="cat1"></a> {/* What the category button links to, anchor provides buffer from header, id is the same as the corresponding button */}
             <div class="items-grid-cont">
+              {Object.keys(this.state.items).map((category_name) => (
+                /*beginnings of dynamically populating the categories; you might need to access the item arrays using the following:
+                    this.state.items[category_name]
+                  or something similar to that  
+                */
+                  <p>{category_name}</p>
+              ))}
               <h3>Category</h3>
               <div class="inner-grid-cont">
                 {/* This will be a loop per item */}

@@ -13,13 +13,11 @@ export default class Account extends React.Component {
 
   componentDidMount() {
     axios
-      .get(`https://chickpeaapi.glitch.me/user`, { withCredentials: true })
+      .get(`https://chickpeaapi.glitch.me/user/account-details`, { withCredentials: true })
       .then((res) => {
         const data = res.data;
         //console.log(data);
-        if (data.LoggedIn) {
-          this.setState({ customer: data.Username });
-        }
+          this.setState({ customer: data.customer_info });
       })
       .catch(function (error) {
         console.log(error);
