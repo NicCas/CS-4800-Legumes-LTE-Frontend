@@ -41,10 +41,17 @@ export default class Header extends React.Component {
 
   sendSearch() {
     axios("https://chickpeaapi.glitch.me/search/query", {
-      method: "post",
+      method: "get",
       data: {
-        searchQuery: document.getElementById("query").value,
+        searchInput: document.getElementById("query").value,
       },
+    })
+    .then((res) => {
+      const data = res.data;
+      console.log(data);
+    })
+    .catch(function (error) {
+      console.log(error);
     });
   }
 
