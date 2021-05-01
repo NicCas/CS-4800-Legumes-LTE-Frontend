@@ -1,4 +1,5 @@
 import React, { lazy } from 'react'
+import { Redirect } from 'react-router-dom'
 import "./Checkout.css";
 import axios from 'axios'
 
@@ -32,6 +33,7 @@ export default class Checkout extends React.Component {
             Billing_City: "",
             Billing_State: "",
             Billing_ZIP: "",
+            order_placed: null
         }
         this.componentDidMount = this.componentDidMount.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -187,10 +189,16 @@ get previousButton(){
       })
         .then((res) => {
           console.log(res);
+          this.setState({order_placed: true});
         })
     }
 
     render() {
+        if(this.state.order_placed){
+          return(
+            <Redirect to="/order-placed" />
+        );
+        }
         return (
             <div id="checkout-page">
                 <h1>Checkout</h1>
