@@ -10,7 +10,8 @@ export default class Account extends React.Component {
   state = {
     customer: {},
     addresses: [], billings: [], shippings: [], deliveries: [], delivs: [], transporting: [], transits: [], deliv_items: [], favs: [],
-    Handlers: [], handler: ""
+    handlers: [], handler: {},
+    items: [], store: []
   };
 
   componentDidMount() {
@@ -18,23 +19,39 @@ export default class Account extends React.Component {
     axios.get(`https://chickpeaapi.glitch.me/handler`)
     .then((res) => {
       const data = res.data;
-      this.setState({Handlers: data});
+      this.setState({handlers: data});
     }) 
     .catch(function (error) {
       console.log(error);
     });
     
-  
+   /* let currentComponent = this;
+    axios("https://chickpeaapi.glitch.me/stores/detail", {
+      method: "post",
+      data: {
+        store_id: currentComponent.props.match.params.store_id
+      }
+    }).then(function(response) {
+      console.log(response);
+      const store_data = response.data.store;
+      const item_list = response.data.items;
+      currentComponent.setState({
+        items: item_list,
+        store: store_data
+        });
+    });*/
     axios
       .get(`https://chickpeaapi.glitch.me/user/account-details`, /*`https://chickpeaapi.glitch.me/stores`,*/ { withCredentials: true })
       .then((res) => {
         const data = res.data;
+        const favorite = res.data.favorites.Favorite_Items;
         var billing_addrs = [];
         var shipping_addrs = [];
         var order_nos = [];
         var delivered_items = [];
         var item_props = [];
-        var delivery_handler = ""
+        var in_transit = [];
+        var delivery_handler = {}
           console.log(data);
           this.setState({ customer: data.customer_info });
           for(var i = 0; i < data.addresses.length; i++){
@@ -46,11 +63,18 @@ export default class Account extends React.Component {
           this.setState({billings: billing_addrs[0]});
           this.setState({shippings: shipping_addrs[0]});
           for(var i = 0; i < data.deliveries.length; i++){
+            if(data.deliveries[i].Delivered == true)  
               order_nos.push(data.deliveries[i]);
-              
-            }
-          this.setState({ delivs: order_nos[0], transporting: order_nos[1]});
-
+            else
+              in_transit.push(data.deliveries[i])
+           }
+           in_transit.sort((a, b) => b.Date > a.Date ? 1: -1);
+          this.setState({ delivs: order_nos, transporting: in_transit[0]});
+          for(var i = 0; i < data.handlers.length; i++){
+            if(data.handlers[i].Handler_ID == transporting.Handler_ID)
+              delivery_handler = handlers[i];
+          }
+          this.setState({handler: delivery_handler});
           //items that have been delivered
           /*for(var i = 0; i < data.deliveries.Purchased_Items.length; i++){
              delivered_items.push(data.deliveries.Purchased_Items);
@@ -65,12 +89,13 @@ export default class Account extends React.Component {
             }
             
           }
-          this.setState({favs: item_props[0]});*/
+          this.setState({favs: item_props[0]});
           for(var a_handler in Handlers){
               if(a_handler.Handler_ID == transporting.Handler_ID)
                 delivery_handler = a_handler.Handler_Name;
           }
-          this.setState({handler: delivery_handler});  
+          this.setState({handler: delivery_handler});  */
+          this.setState({favs: favorite});
       })
       .catch(function (error) {
         console.log(error);
@@ -88,7 +113,7 @@ export default class Account extends React.Component {
         <div id="account-header" class="account-wrapper">
           <div id="name-image">
             <img src={account} class="account-image"></img>
-            <h3 class="account-title">Hello, {this.state.customer.Name}</h3>
+            <h3 class="account-title">Hello, {this.state.customer.Username}</h3>
           </div>
           <div id="logout-button">
             <a href="/home">
@@ -125,7 +150,7 @@ export default class Account extends React.Component {
                   <th class="price-column">Price</th>
                 </tr>
                 <tr>
-                  <td> this.state.favs.Item_Name</td>
+                  <td> {this.state.favs} </td>
                   <td>Store</td>
                   <td>Price</td>
                 </tr>
@@ -135,11 +160,11 @@ export default class Account extends React.Component {
           <div id="recent-order" class="account-grid-item">
             <h3>Current Order</h3>
             <div id="order-info">
-              <p>Order Number: #000000</p>
+              <p>Order Number: #{this.state.transporting.Delivery_ID}</p>
               <ProgressBar animated variant="warning" now={20} />
               <p>Order Staus: Status</p>
               <p>Order Time: {this.state.transporting.Date}</p>
-              <p>Handler: {this.state.handler} </p>
+              <p>Handler: {this.state.handler.Handler_Name} </p>
               <p>Delivery Address: {this.state.shippings.Street}, {this.state.shippings.City}, {this.state.shippings.State}, {this.state.shippings.Zip_Code}</p>
             </div>
             <table>
@@ -178,7 +203,9 @@ export default class Account extends React.Component {
               <th>Items</th>
             </tr>
             <tr>
-              <td>{this.state.delivs.Delivery_ID}</td>
+              <td>
+                {this.state.delivs.map((deliveries) => ({deliveries.Delivery_ID}))}  
+              </td>
               <td> {this.state.delivs.Date} </td>
               <td>{this.state.delivs.Total_Cost}</td>
               <td> {this.state.shippings.Street},
