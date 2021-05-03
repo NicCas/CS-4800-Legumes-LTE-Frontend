@@ -202,18 +202,18 @@ export default class Account extends React.Component {
               <th>Delivery Address</th>
               <th>Items</th>
             </tr>
-            <tr>
                 {this.state.delivs.map((deliveries) => (
+                <tr>
                   <td>{deliveries.Delivery_ID}</td>
+                  <td> {this.state.delivs.Date} </td>
+                  <td>{this.state.delivs.Total_Cost}</td>
+                  <td>{this.state.shippings.Street},
+                      {this.state.shippings.City}, 
+                      {this.state.shippings.State},
+                      {this.state.shippings.Zip_Code}</td>
+                  <td>this.state.deliv_items</td>
+                </tr>
                   ))}  
-              <td> {this.state.delivs.Date} </td>
-              <td>{this.state.delivs.Total_Cost}</td>
-              <td> {this.state.shippings.Street},
-               {this.state.shippings.City}, 
-               {this.state.shippings.State},
-                {this.state.shippings.Zip_Code} </td>
-              <td>this.state.deliv_items</td>
-            </tr>
           </table>
         </div>
         <div id="extra-space-account"></div>
