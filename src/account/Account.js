@@ -203,9 +203,9 @@ export default class Account extends React.Component {
               <th>Items</th>
             </tr>
             <tr>
-              <td>
-                {this.state.delivs.map((deliveries) => ({deliveries.Delivery_ID}))}  
-              </td>
+                {this.state.delivs.map((deliveries) => (
+                  <td>{deliveries.Delivery_ID}</td>
+                  ))}  
               <td> {this.state.delivs.Date} </td>
               <td>{this.state.delivs.Total_Cost}</td>
               <td> {this.state.shippings.Street},
