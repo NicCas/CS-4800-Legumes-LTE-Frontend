@@ -1,27 +1,30 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import InputGroup from 'react-bootstrap/InputGroup'
-import Button from 'react-bootstrap/Button'
+import InputGroup from "react-bootstrap/InputGroup";
+import Button from "react-bootstrap/Button";
 import "./StorePage.css";
 import item from "../assets/item_placeholder.png";
-import axios from 'axios'
+import axios from "axios";
 
-{/* For dynamic implementation ItemCards code should be placed back into the main function, to simplify passing arguments.
-  * it is seperated here for ease of testing */}
+{
+  /* For dynamic implementation ItemCards code should be placed back into the main function, to simplify passing arguments.
+   * it is seperated here for ease of testing */
+}
 function ItemCards() {
   return (
     <Card style={{ width: "10rem" }}>
       <Card.Img
         variant="top"
         id="item-icon"
-        src={item} 
+        src={item}
         alt="Placeholder Item Picture"
-      />{/* Change item to an alt if database image does not exist */}
+      />
+      {/* Change item to an alt if database image does not exist */}
 
       <Card.Body>
         <Card.Title>Item Name</Card.Title>
         <Card.Text>$ Price</Card.Text>
-{/*
+        {/*
         <InputGroup className="mb-3">
           <InputGroup.Append>
             <Button variant="outline-secondary">Buy</Button>
@@ -34,7 +37,6 @@ function ItemCards() {
         </InputGroup>
 */}
         <button class="btn">Buy</button>
-        
       </Card.Body>
 
       <Card.Footer>
@@ -44,15 +46,16 @@ function ItemCards() {
   );
 }
 
-{/* The main funcion */}
+{
+  /* The main funcion */
+}
 
 export default class Store extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
       items: [],
-      store: {}
+      store: {},
     };
 
     this.componentDidMount = this.componentDidMount.bind(this);
@@ -64,34 +67,49 @@ export default class Store extends React.Component {
     axios("https://chickpeaapi.glitch.me/stores/detail", {
       method: "post",
       data: {
-        store_id: currentComponent.props.match.params.store_id
-      }
-    }).then(function(response) {
+        store_id: currentComponent.props.match.params.store_id,
+      },
+    }).then(function (response) {
       console.log(response);
       const store_data = response.data.store;
       const item_list = response.data.items;
       currentComponent.setState({
         items: item_list,
-        store: store_data
-        });
+        store: store_data,
+      });
+
+      var rating = store_data.Rating;
+
+      if (rating >= 5) {
+        document.getElementById("5").checked = "checked";
+      } else if (5 > rating && rating > 4) {
+        document.getElementById("4").checked = "checked";
+      } else if (4 > rating && rating > 3) {
+        document.getElementById("3").checked = "checked";
+      } else if (3 > rating && rating > 2) {
+        document.getElementById("2").checked = "checked";
+      } else if (2 > rating && rating > 1) {
+        document.getElementById("1").checked = "checked";
+      } else {
+        document.getElementById("1").checked = "";
+      }
     });
     // grabbing url parameter /:store_id
     //console.log(this.props.match.params);
   }
 
-  addToCart(id, quantity){
+  addToCart(id, quantity) {
     axios("https://chickpeaapi.glitch.me/cart/add", {
       withCredentials: true,
       method: "post",
       data: {
         Item_ID: id,
-        Quantity: quantity
-      }
-    })
-    .then((res) => {
+        Quantity: quantity,
+      },
+    }).then((res) => {
       console.log(res.data);
       alert(`Added to cart!`);
-    })
+    });
   }
 
   render() {
@@ -104,7 +122,7 @@ export default class Store extends React.Component {
             <div id="store-info" class="store-grid-item">
               <div id="backsplash-div"></div>
               <h2>{this.state.store.Store_Name}</h2>
-  
+
               {/* Code for the star rating */}
               <div class="info-block" id="info-title">
                 <div id="rating-wrapper">
@@ -131,7 +149,7 @@ export default class Store extends React.Component {
                       name="rating"
                       value="3"
                       id="3"
-                      checked="checked"
+                      checked=""
                       disabled="true"
                     ></input>
                     <label for="3">☆</label>
@@ -170,7 +188,7 @@ export default class Store extends React.Component {
                 </div>
               </div>
             </div>
-  
+
             {/* Categories button box */}
             <div class="info-block store-grid-item" id="categories">
               <h3>Categories</h3>
@@ -185,37 +203,37 @@ export default class Store extends React.Component {
                   <a class="cat" href={`#${category_name}`}>
                     <p>{category_name}</p>
                   </a>
-              ))}
+                ))}
               </div>
             </div>
           </div>
-  
-          
+
           <div id="items-list">
             {/* Beginning of items box, this will be a loop per category*/}
 
             {Object.keys(this.state.items).map((category_name) => (
               <div>
-               <a class="anchor" id={`${category_name}`}></a>
-               <div class="items-grid-cont">
-               <div class="inner-grid-cont">
-                <h3>{category_name}</h3>
-                {this.state.items[category_name].map((product) => (
-                <div class="items-grid-item">
-                <Card style={{ width: "10rem" }}>
-                <Card.Img
-                  variant="top"
-                  id="item-icon"
-                  src={product.Image_URL} 
-                  width="100px"
-                  height="100px"
-                  alt="Placeholder Item Picture"
-                />{/* Change item to an alt if database image does not exist */}
+                <a class="anchor" id={`${category_name}`}></a>
+                <div class="items-grid-cont">
+                  <div class="inner-grid-cont">
+                    <h3>{category_name}</h3>
+                    {this.state.items[category_name].map((product) => (
+                      <div class="items-grid-item">
+                        <Card style={{ width: "10rem" }}>
+                          <Card.Img
+                            variant="top"
+                            id="item-icon"
+                            src={product.Image_URL}
+                            width="100px"
+                            height="100px"
+                            alt="Placeholder Item Picture"
+                          />
+                          {/* Change item to an alt if database image does not exist */}
 
-                  <Card.Body>
-                    <Card.Title>{product.Item_Name}</Card.Title>
-                    <Card.Text>${product.Price}</Card.Text>
-                  {/*
+                          <Card.Body>
+                            <Card.Title>{product.Item_Name}</Card.Title>
+                            <Card.Text>${product.Price}</Card.Text>
+                            {/*
                           <InputGroup className="mb-3">
                             <InputGroup.Append>
                               <Button variant="outline-secondary">Buy</Button>
@@ -227,22 +245,26 @@ export default class Store extends React.Component {
                             />
                           </InputGroup>
                   */}
-                    <button class="btn" onClick={()=>this.addToCart(product.Item_ID, 1)}>Add to Cart</button>
-                    
-                  </Card.Body>
+                            <button
+                              class="btn"
+                              onClick={() => this.addToCart(product.Item_ID, 1)}
+                            >
+                              Add to Cart
+                            </button>
+                          </Card.Body>
 
-                  <Card.Footer>
-                    <small className="text-muted">Stock: {product.Stock}</small>
-                  </Card.Footer>
-                </Card>
-                </div>
-                ))}
-               </div>
+                          <Card.Footer>
+                            <small className="text-muted">
+                              Stock: {product.Stock}
+                            </small>
+                          </Card.Footer>
+                        </Card>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-               
-              ))}
-
+            ))}
           </div>
         </div>
         <div id="extra-space-store"></div>
@@ -250,4 +272,3 @@ export default class Store extends React.Component {
     );
   }
 }
-

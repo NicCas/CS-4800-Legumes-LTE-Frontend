@@ -46,13 +46,13 @@ export default class Header extends React.Component {
         searchInput: document.getElementById("query").value,
       },
     })
-    .then((res) => {
-      const data = res.data;
-      console.log(data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+      .then((res) => {
+        const data = res.data;
+        console.log(data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   render() {
@@ -84,7 +84,7 @@ export default class Header extends React.Component {
                 <Link to="/storehome" class="nav-link">
                   <div class="header-wrapper">
                     <img src={stores} class="header-image"></img>
-                    <b>Stores Home</b>
+                    <b>Stores</b>
                   </div>
                 </Link>
               </li>
