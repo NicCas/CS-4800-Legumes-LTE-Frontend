@@ -16,32 +16,8 @@ export default class Account extends React.Component {
 
   componentDidMount() {
 
-    axios.get(`https://chickpeaapi.glitch.me/handler`)
-    .then((res) => {
-      const data = res.data;
-      this.setState({handlers: data});
-    }) 
-    .catch(function (error) {
-      console.log(error);
-    });
     
-   /* let currentComponent = this;
-    axios("https://chickpeaapi.glitch.me/stores/detail", {
-      method: "post",
-      data: {
-        store_id: currentComponent.props.match.params.store_id
-      }
-    }).then(function(response) {
-      console.log(response);
-      const store_data = response.data.store;
-      const item_list = response.data.items;
-      currentComponent.setState({
-        items: item_list,
-        store: store_data
-        });
-    });*/
-    axios
-      .get(`https://chickpeaapi.glitch.me/user/account-details`, /*`https://chickpeaapi.glitch.me/stores`,*/ { withCredentials: true })
+    axios.get(`https://chickpeaapi.glitch.me/user/account-details`, /*`https://chickpeaapi.glitch.me/stores`,*/ { withCredentials: true })
       .then((res) => {
         const data = res.data;
         const favorite = res.data.favorites.Favorite_Items;
@@ -70,32 +46,20 @@ export default class Account extends React.Component {
            }
            in_transit.sort((a, b) => b.Date > a.Date ? 1: -1);
           this.setState({ delivs: order_nos, transporting: in_transit[0]});
-          for(var i = 0; i < data.handlers.length; i++){
-            if(data.handlers[i].Handler_ID == transporting.Handler_ID)
-              delivery_handler = handlers[i];
-          }
-          this.setState({handler: delivery_handler});
+          
           //items that have been delivered
           /*for(var i = 0; i < data.deliveries.Purchased_Items.length; i++){
              delivered_items.push(data.deliveries.Purchased_Items);
              
           }
-          this.setState({deliv_items: delivered_items[0]});
+          this.setState({deliv_items: delivered_items[0]});*/
 
           //Favorites
           for(var i = 0; i < data.favorites.length; i++){
-            for(var j = 0; j < data.favorites.Favorite_Items.length; j++){
-              item_props.push(data.favorites[i].Favorite_Items[j]);
-            }
+            item_props.push(data.favorites[i]);
             
           }
-          this.setState({favs: item_props[0]});
-          for(var a_handler in Handlers){
-              if(a_handler.Handler_ID == transporting.Handler_ID)
-                delivery_handler = a_handler.Handler_Name;
-          }
-          this.setState({handler: delivery_handler});  */
-          this.setState({favs: favorite});
+          this.setState({favs: item_props});
       })
       .catch(function (error) {
         console.log(error);
@@ -149,11 +113,14 @@ export default class Account extends React.Component {
                   <th class="store-column">Store</th>
                   <th class="price-column">Price</th>
                 </tr>
+                
+                {this.state.favs.map((favorites) => (
                 <tr>
-                  <td> {this.state.favs} </td>
-                  <td>Store</td>
-                  <td>Price</td>
+                  <td>{favorites.Item_Name}</td>
+                  <td> {favorites.Store_ID} </td>
+                  <td>${favorites.Price.toFixed(2)}</td>
                 </tr>
+                  ))}  
               </table>
             </div>
           </div>
@@ -205,8 +172,8 @@ export default class Account extends React.Component {
                 {this.state.delivs.map((deliveries) => (
                 <tr>
                   <td>{deliveries.Delivery_ID}</td>
-                  <td> {this.state.delivs.Date} </td>
-                  <td>{this.state.delivs.Total_Cost}</td>
+                  <td> {deliveries.Date} </td>
+                  <td>${deliveries.Total_Cost}</td>
                   <td>{this.state.shippings.Street},
                       {this.state.shippings.City}, 
                       {this.state.shippings.State},
