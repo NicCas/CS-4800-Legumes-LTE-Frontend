@@ -1,8 +1,9 @@
-import React from "react";
+import React, { lazy } from "react";
 import axios from "axios";
 import "./Account.css";
 import account from "../assets/owner_placeholder.png";
-import ProgressBar from "react-bootstrap/ProgressBar";
+
+const CurrentOrder = lazy(() => import("./CurrentOrder"));
 
 axios.defaults.withCredentials = true;
 
@@ -16,7 +17,6 @@ export default class Account extends React.Component {
 
   componentDidMount() {
 
-    
     axios.get(`https://chickpeaapi.glitch.me/user/account-details`, /*`https://chickpeaapi.glitch.me/stores`,*/ { withCredentials: true })
       .then((res) => {
         const data = res.data;
@@ -125,38 +125,10 @@ export default class Account extends React.Component {
             </div>
           </div>
           <div id="recent-order" class="account-grid-item">
-            <h3>Current Order</h3>
-            <div id="order-info">
-              <p>Order Number: #{this.state.transporting.Delivery_ID}</p>
-              <ProgressBar animated variant="warning" now={20} />
-              <p>Order Staus: Status</p>
-              <p>Order Time: {this.state.transporting.Date}</p>
-              <p>Handler: {this.state.handler.Handler_Name} </p>
-              <p>Delivery Address: {this.state.shippings.Street}, {this.state.shippings.City}, {this.state.shippings.State}, {this.state.shippings.Zip_Code}</p>
-            </div>
-            <table>
-              <tr>
-                <th class="product-column">Product</th>
-                <th class="store-column">Store</th>
-                <th class="price-column">Price</th>
-                <th class="quantity-column">Quantity</th>
-                <th class="subtotal-column">Subtotal</th>
-              </tr>
-              <tr>
-                <td>Product</td>
-                <td>Store</td>
-                <td>Price</td>
-                <td>Quantity</td>
-                <td>Subtotal</td>
-              </tr>
-            </table>
-            <div id="price-info">
-              <p>Tax: ${(this.state.transporting.Total_Cost * .0825).toFixed(2)} </p>
-              <p>Delivery Fee: $2.00 </p>
-              <p>Tip: $2.50 </p>
-              <br></br>
-              <p>Total Price: ${(this.state.transporting.Total_Cost + (this.state.transporting.Total_Cost * .0825) + 4.50).toFixed(2)} </p>
-            </div>
+          <CurrentOrder
+            transporting = {this.state.transporting}
+            shippings = {this.state.shippings} 
+          />
           </div>
         </div>
         <div id="order-history" class="account-grid-item">
