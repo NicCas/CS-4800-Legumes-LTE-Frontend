@@ -64,10 +64,11 @@ export default class Search extends React.Component {
     });
   }
 
-  componentDidUpdate(prevProps, prevState){
-    if (prevProps.search_query !== this.props.search_query) {
+  componentDidUpdate(prevProps){
+    let currentComponent = this;
+    if (prevProps !== this.props) {
       console.log("props updated");
-      this.setState({userSearch: this.props.userSearch});
+      this.setState({userSearch: this.props.match.params.search_query});
       axios("https://chickpeaapi.glitch.me/search/query", {
         method: "post",
         data: {
