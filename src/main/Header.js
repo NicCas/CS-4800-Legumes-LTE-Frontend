@@ -37,18 +37,11 @@ export default class Header extends React.Component {
         console.log(error);
       });
   }
-/*
-  componentDidMount() {
-    const script = document.createElement("script");
-    script.src = "../stores/Search.js";
-    script.async = true;
-    document.body.appendChild(script);
-  }*/
 
   handleChange(event) {
     this.setState({ search_query: event.target.value });
   }
-
+/*
   sendSearch() {
     axios("https://chickpeaapi.glitch.me/search/query", {
       method: "get",
@@ -63,7 +56,7 @@ export default class Header extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
-  }
+  }*/
 
   render() {
     return (
@@ -129,7 +122,6 @@ export default class Header extends React.Component {
                   <button
                     class="btn"
                     type="submit"
-                    onClick={() => this.sendSearch()}
                   >
                     Search
                   </button>
