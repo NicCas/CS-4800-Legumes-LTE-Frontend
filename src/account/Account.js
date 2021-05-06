@@ -1,8 +1,9 @@
-import React from "react";
+import React, { lazy } from "react";
 import axios from "axios";
 import "./Account.css";
 import account from "../assets/owner_placeholder.png";
-import ProgressBar from "react-bootstrap/ProgressBar";
+
+const CurrentOrder = lazy(() => import("./CurrentOrder"));
 
 axios.defaults.withCredentials = true;
 
@@ -70,11 +71,16 @@ export default class Account extends React.Component {
   };
 
   componentDidMount() {
+<<<<<<< HEAD
     axios
       .get(
         `https://chickpeaapi.glitch.me/user/account-details`,
         /*`https://chickpeaapi.glitch.me/stores`,*/ { withCredentials: true }
       )
+=======
+
+    axios.get(`https://chickpeaapi.glitch.me/user/account-details`, /*`https://chickpeaapi.glitch.me/stores`,*/ { withCredentials: true })
+>>>>>>> 89a991493ea8ba8da7a7bbb8d6962ed6778148dc
       .then((res) => {
         const data = res.data;
         const favorite = res.data.favorites.Favorite_Items;
@@ -193,6 +199,7 @@ export default class Account extends React.Component {
             </div>
           </div>
           <div id="recent-order" class="account-grid-item">
+<<<<<<< HEAD
             <h3>Current Order</h3>
             <div id="order-info">
               <p>Order Number: #{this.state.transporting.Delivery_ID}</p>
@@ -243,6 +250,12 @@ export default class Account extends React.Component {
                 ).toFixed(2)}{" "}
               </p>
             </div>
+=======
+          <CurrentOrder
+            transporting = {this.state.transporting}
+            shippings = {this.state.shippings} 
+          />
+>>>>>>> 89a991493ea8ba8da7a7bbb8d6962ed6778148dc
           </div>
         </div>
         <div id="order-history" class="account-grid-item">

@@ -15,10 +15,11 @@ export default class HandbasketTable extends React.Component{
           .get(`https://chickpeaapi.glitch.me/cart`)
           .then((res) => {
             const data = res.data;
+            console.log(data);
             var running_total = 0;
             for (var item of data) {
               running_total +=
-                parseFloat(item.Price.$numberDecimal) * item.Quantity;
+               (item.Price.$numberDecimal ? item.Price.$numberDecimal : item.Price) * item.Quantity;
             }
             this.setState({ handbasket: data, total: running_total });
           })
@@ -77,9 +78,9 @@ export default class HandbasketTable extends React.Component{
                     <div class="product-name">{item.Item_Name}</div>
                     </td>
                     <td>{item.Store_Name}</td>
-                    <td>${item.Price.$numberDecimal}</td>
+                    <td>${item.Price.$numberDecimal ? item.Price.$numberDecimal : item.Price }</td>
                     <td>{item.Quantity}</td>
-                    <td>${item.Price.$numberDecimal * item.Quantity}</td>
+                    <td>${(item.Price.$numberDecimal ? item.Price.$numberDecimal : item.Price) * item.Quantity}</td>
                     <td>
                       <button className="btn" onClick={()=>this.removeItem(item.Item_ID)}>Remove from Handbasket</button>
                     </td>
