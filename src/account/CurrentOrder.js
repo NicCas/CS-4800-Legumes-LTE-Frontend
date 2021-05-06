@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
-var deliveryTime = 0;
+/*
 /*
 var timeReceived = 10000; //new Date('2021-04-29T03:24:00')
 
@@ -32,37 +32,9 @@ function expectedDeliveryPercentage() {
 
   return deliveryPercentage;
 }
+///
+
 */
-
-function incrementTime() {
-  while (deliveryTime <= 0) {
-    setTimeout(function () {
-      if (deliveryTime <= 100) {
-        deliveryTime += 10;
-      } else {
-        deliveryTime = 0;
-        clearTimeout();
-      }
-    }, 5000);
-  }
-}
-
-function orderStatus(deliveryPercentage) {
-  var status;
-  if (deliveryPercentage < 10) {
-    status = "Recieving your order";
-  } else if (deliveryPercentage < 50) {
-    status = "Gathering items";
-  } else if (deliveryPercentage < 60) {
-    status = "Handler is on their way to the store(s)";
-  } else if (deliveryPercentage < 100) {
-    status = "Delivery is on its way";
-  } else {
-    status = "Delivered!";
-  }
-  return status;
-}
-
 export default class CurrentOrder extends React.Component {
   constructor(props) {
     super(props);
@@ -70,12 +42,41 @@ export default class CurrentOrder extends React.Component {
       Delivery_ID: null,
       Handler_Name: "Handler",
       Purchased_Items: [],
-      Time_Order_Placed: null,
+      deliveryTime: new Date
     };
 
     console.log(this.props);
 
     this.componentDidUpdate = this.componentDidUpdate.bind(this);
+  }
+
+  incrementTime() {
+    while (this.state.deliveryTime <= 0) {
+      setTimeout(function () {
+        if (this.state.deliveryTime <= 100) {
+          this.state.deliveryTime += 10;
+        } else {
+          this.state.deliveryTime = 0;
+          clearTimeout();
+        }
+      }, 5000);
+    }
+  }
+  
+  orderStatus(deliveryPercentage) {
+    var status;
+    if (deliveryPercentage < 10) {
+      status = "Recieving your order";
+    } else if (deliveryPercentage < 50) {
+      status = "Gathering items";
+    } else if (deliveryPercentage < 60) {
+      status = "Handler is on their way to the store(s)";
+    } else if (deliveryPercentage < 100) {
+      status = "Delivery is on its way";
+    } else {
+      status = "Delivered!";
+    }
+    return status;
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -88,10 +89,11 @@ export default class CurrentOrder extends React.Component {
         method: "post",
       }).then((res) => {
         console.log(res.data);
+        const time_difference = this.state.deliveryTime.getTime() - this.props.transporting.Date.getTime();
+        console.log(time_difference);
         this.setState({
           Handler_Name: res.data.Handler_Name,
           Purchased_Items: res.data.Purchased_Items,
-          Time_Order_Placed: this.props.transporting.Date,
         });
       });
     }
@@ -100,12 +102,12 @@ export default class CurrentOrder extends React.Component {
   render() {
     return (
       <div>
-        {incrementTime()}
+        {/*this.incrementTime()*/}
         <h3>Current Order</h3>
         <div id="order-info">
           <p>Order Number: #{this.props.transporting.Delivery_ID}</p>
-          <ProgressBar animated variant="warning" now={deliveryTime} />
-          <p>Order Staus: {orderStatus(deliveryTime)}</p>
+          <ProgressBar animated variant="warning" now="0" />
+          <p>Order Staus: {this.orderStatus(this.state.deliveryTime)}</p>
           <p>Order Time: {this.props.transporting.Date}</p>
           <p>Handler: {this.state.Handler_Name} </p>
           <p>

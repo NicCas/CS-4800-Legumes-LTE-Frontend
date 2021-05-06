@@ -148,7 +148,7 @@ export default class Account extends React.Component {
             </div>
           </div>
           <div id="recent-order" class="account-grid-item">
-            <CurrentOrder
+           <CurrentOrder
               transporting={this.state.transporting}
               shippings={this.state.shippings}
             />
