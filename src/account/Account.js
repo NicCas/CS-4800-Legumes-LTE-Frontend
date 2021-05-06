@@ -71,16 +71,11 @@ export default class Account extends React.Component {
   };
 
   componentDidMount() {
-<<<<<<< HEAD
     axios
       .get(
         `https://chickpeaapi.glitch.me/user/account-details`,
         /*`https://chickpeaapi.glitch.me/stores`,*/ { withCredentials: true }
       )
-=======
-
-    axios.get(`https://chickpeaapi.glitch.me/user/account-details`, /*`https://chickpeaapi.glitch.me/stores`,*/ { withCredentials: true })
->>>>>>> 89a991493ea8ba8da7a7bbb8d6962ed6778148dc
       .then((res) => {
         const data = res.data;
         const favorite = res.data.favorites.Favorite_Items;
@@ -199,63 +194,10 @@ export default class Account extends React.Component {
             </div>
           </div>
           <div id="recent-order" class="account-grid-item">
-<<<<<<< HEAD
-            <h3>Current Order</h3>
-            <div id="order-info">
-              <p>Order Number: #{this.state.transporting.Delivery_ID}</p>
-              <ProgressBar
-                animated
-                variant="warning"
-                now={expectedDeliveryPercentage()}
-                label="test"
-              />
-              <p>Order Staus: {status}</p>
-              <p>Order Time: {this.state.transporting.Date}</p>
-              <p>Handler: {this.state.handler.Handler_Name} </p>
-              <p>
-                Delivery Address: {this.state.shippings.Street},{" "}
-                {this.state.shippings.City}, {this.state.shippings.State},{" "}
-                {this.state.shippings.Zip_Code}
-              </p>
-            </div>
-            <table>
-              <tr>
-                <th class="product-column">Product</th>
-                <th class="store-column">Store</th>
-                <th class="price-column">Price</th>
-                <th class="quantity-column">Quantity</th>
-                <th class="subtotal-column">Subtotal</th>
-              </tr>
-              <tr>
-                <td>Product</td>
-                <td>Store</td>
-                <td>Price</td>
-                <td>Quantity</td>
-                <td>Subtotal</td>
-              </tr>
-            </table>
-            <div id="price-info">
-              <p>
-                Tax: ${(this.state.transporting.Total_Cost * 0.0825).toFixed(2)}{" "}
-              </p>
-              <p>Delivery Fee: $2.00 </p>
-              <p>Tip: $2.50 </p>
-              <br></br>
-              <p>
-                Total Price: $
-                {(
-                  this.state.transporting.Total_Cost +
-                  this.state.transporting.Total_Cost * 0.0825 +
-                  4.5
-                ).toFixed(2)}{" "}
-              </p>
-            </div>
-=======
-          <CurrentOrder
-            transporting = {this.state.transporting}
-            shippings = {this.state.shippings} 
-          />
->>>>>>> 89a991493ea8ba8da7a7bbb8d6962ed6778148dc
+            <CurrentOrder
+              transporting={this.state.transporting}
+              shippings={this.state.shippings}
+            />
           </div>
         </div>
         <div id="order-history" class="account-grid-item">
