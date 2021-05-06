@@ -187,7 +187,12 @@ export default class Store extends React.Component {
                   </p>
                 </div>
               </div>
+              {/*
+              <div id="store-bio-text">
+                <p>{this.state.store.Description}</p>
+              </div>
             </div>
+              */}
 
             {/* Categories button box */}
             <div class="info-block store-grid-item" id="categories">

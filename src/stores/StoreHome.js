@@ -65,6 +65,7 @@ export default class StoreHome extends React.Component {
             </Link>
           ))}
         </div>
+        <div id="extra-space-store-home"></div>
       </div>
     );
   }
