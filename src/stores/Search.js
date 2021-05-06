@@ -71,7 +71,9 @@ export default class Search extends React.Component {
   // Another potential method of sending info to middle ware Based on StorePage
   componentDidMount() {
     let currentComponent = this;
+    console.log(this.props.match.params.search_query);
     // axios request will go in here
+    /*
     axios("https://chickpeaapi.glitch.me/search/query", {
       method: "post",
       data: {
@@ -87,7 +89,7 @@ export default class Search extends React.Component {
       });
     });
     // grabbing url parameter /:store_id
-    //console.log(this.props.match.params);
+    //console.log(this.props.match.params);*/
   }
 
   render() {

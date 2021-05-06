@@ -38,9 +38,7 @@ function App() {
             <Route path="/account">
               <Account />
             </Route>
-            <Route path="/search">
-              <Search />
-            </Route>
+            <Route path="/search/:search_query" component={Search} />
             <Route path="/">
               <Home />
             </Route>

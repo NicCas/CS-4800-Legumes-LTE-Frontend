@@ -10,10 +10,16 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default class Header extends React.Component {
-  state = {
-    username: "Account",
-    account_link: "/signin",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "Account",
+      account_link: "/signin",
+      search_query: ''
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
 
   componentDidMount() {
     axios
@@ -31,12 +37,16 @@ export default class Header extends React.Component {
         console.log(error);
       });
   }
-
+/*
   componentDidMount() {
     const script = document.createElement("script");
     script.src = "../stores/Search.js";
     script.async = true;
     document.body.appendChild(script);
+  }*/
+
+  handleChange(event) {
+    this.setState({ search_query: event.target.value });
   }
 
   sendSearch() {
@@ -106,13 +116,16 @@ export default class Header extends React.Component {
                   type="text"
                   placeholder="Search"
                   id="query"
+                  name="search_query"
+                  value={this.state.search_query} 
+                  onChange={this.handleChange}
                 ></input>
 
                 {/* // document.getElementById("query").value should send the input from the search bar, but it is currently breaking the code
                   * I need some way for allowing it to be null
                 
                 <Link to={"/search/" + document.getElementById("query").value} class="nav-link">     */}
-                <Link to={"/search/"} class="nav-link">
+                <Link to={"/search/" + this.state.search_query} class="nav-link">
                   <button
                     class="btn"
                     type="submit"
