@@ -35,6 +35,9 @@ function expectedDeliveryPercentage() {
 ///
 
 */
+
+var deliveryTime = 0;
+
 export default class CurrentOrder extends React.Component {
   constructor(props) {
     super(props);
@@ -42,27 +45,28 @@ export default class CurrentOrder extends React.Component {
       Delivery_ID: null,
       Handler_Name: "Handler",
       Purchased_Items: [],
-      deliveryTime: new Date
+      deliveryTime: 0,
     };
 
     console.log(this.props);
+    console.log(deliveryTime);
+    console.log(this.state.deliveryTime);
 
     this.componentDidUpdate = this.componentDidUpdate.bind(this);
   }
 
   incrementTime() {
-    while (this.state.deliveryTime <= 0) {
-      setTimeout(function () {
-        if (this.state.deliveryTime <= 100) {
-          this.state.deliveryTime += 10;
-        } else {
-          this.state.deliveryTime = 0;
-          clearTimeout();
-        }
-      }, 5000);
+    console.log("out");
+    for (var i = 0; i < 10; i++) {
+      if (this.state.deliveryTime <= 100) {
+        this.state.deliveryTime += 10;
+      } else {
+        this.state.deliveryTime = 0;
+      }
+      console.log("in");
     }
   }
-  
+
   orderStatus(deliveryPercentage) {
     var status;
     if (deliveryPercentage < 10) {
@@ -89,8 +93,12 @@ export default class CurrentOrder extends React.Component {
         method: "post",
       }).then((res) => {
         console.log(res.data);
-        const time_difference = this.state.deliveryTime.getTime() - this.props.transporting.Date.getTime();
+        /*const time_difference =
+          this.state.deliveryTime.getTime() -
+          this.props.transporting.Date.getTime();
         console.log(time_difference);
+        */
+        this.incrementTime();
         this.setState({
           Handler_Name: res.data.Handler_Name,
           Purchased_Items: res.data.Purchased_Items,
@@ -102,11 +110,14 @@ export default class CurrentOrder extends React.Component {
   render() {
     return (
       <div>
-        {/*this.incrementTime()*/}
         <h3>Current Order</h3>
         <div id="order-info">
           <p>Order Number: #{this.props.transporting.Delivery_ID}</p>
-          <ProgressBar animated variant="warning" now="0" />
+          <ProgressBar
+            animated
+            variant="warning"
+            now={this.state.deliveryTime}
+          />
           <p>Order Staus: {this.orderStatus(this.state.deliveryTime)}</p>
           <p>Order Time: {this.props.transporting.Date}</p>
           <p>Handler: {this.state.Handler_Name} </p>
