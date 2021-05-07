@@ -50,9 +50,8 @@ export default class StoreHome extends React.Component {
                   <div class="column middle">
                     <img
                       id="owner-icon"
-                      src={owner}
+                      src={store.Owner_Picture}
                       alt="Placeholder Owner Picture"
-                      //style="width:60px;height:60px;"
                     ></img>
                   </div>
                   <div class="column right">
