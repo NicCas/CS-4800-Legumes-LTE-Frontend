@@ -1,165 +1,171 @@
 #checkout-page {
-    position: relative;
-    padding: 100px 20px;
-    background-image: linear-gradient(var(--purple3), var(--purple1));
+  position: relative;
+  padding: 100px 20px;
+  background-image: linear-gradient(var(--purple3), var(--purple1));
+}
+
+#checkout-page h1 {
+  text-align: left;
+  margin: 20px;
+  margin-left: -5px;
 }
 
 .fade-in {
-    opacity: 1;
-	animation-name: fadeInOpacity;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: .4s;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.4s;
 }
 
 @keyframes fadeInOpacity {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-  /* stuff from handbasket.css */
-  
-  #product-column {
-	width: 50%;
-  }
-  
-  .product-image {
-	display: inline-block;
-  }
-  
-  .product-name {
-	display: inline-block;
-	padding-left: 20%;
-  }
-  
-  table {
-	table-layout: fixed;
-	margin: auto;
-	position: relative;
-	width: 90%;
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-	border-collapse: collapse;
-	background-color: var(--yellow1);
-	box-shadow: 0px 0px 20px var(--purple4);
-  }
-  
-  td,
-  th {
-	padding: 15px;
-	border-bottom: solid 1px var(--purple4);
-  }
-  
-  th {
-	color: var(--yellow5);
-  }
-  
-  td {
-	background-color: var(--purple1);
-	padding-left: 15px;
-	font-size: large;
-  }
-  
-  #total {
-	margin: auto;
-	position: relative;
-	width: 90%;
-	text-align: right;
-	padding: 15px;
-	border: solid 1px var(--purple4);
-	background-color: var(--purple1);
-  }
-  
-  /* styling for smaller screens */
-  
-  /* 
+/* stuff from handbasket.css */
+
+#product-column {
+  width: 50%;
+}
+
+.product-image {
+  display: inline-block;
+}
+
+.product-name {
+  display: inline-block;
+  padding-left: 20%;
+}
+
+table {
+  table-layout: fixed;
+  margin: auto;
+  position: relative;
+  width: 90%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-collapse: collapse;
+  background-color: var(--yellow1);
+  box-shadow: 0px 0px 20px var(--purple4);
+}
+
+td,
+th {
+  padding: 15px;
+  border-bottom: solid 1px var(--purple4);
+}
+
+th {
+  color: var(--yellow5);
+}
+
+td {
+  background-color: var(--purple1);
+  padding-left: 15px;
+  font-size: large;
+}
+
+#total {
+  margin: auto;
+  position: relative;
+  width: 90%;
+  text-align: right;
+  padding: 15px;
+  border: solid 1px var(--purple4);
+  background-color: var(--purple1);
+}
+
+/* styling for smaller screens */
+
+/* 
   Max width before this PARTICULAR table gets nasty
   This query will take effect for any screen smaller than 760px
   and also iPads specifically.
   */
-  @media only screen and (max-width: 760px),
-	(min-device-width: 768px) and (max-device-width: 1024px) {
-	h1 {
-	  text-align: center;
-	  margin-left: 0;
-	  font-weight: bold;
-	  color: var(--purple5);
-	}
-  
-	/* change how product cell is shown */
-	.product-name {
-	  display: block;
-	  padding-left: 0%;
-	}
-  
-	.product-image {
-	  display: block;
-	}
-  
-	/* Force table to not be like tables anymore */
-	table,
-	thead,
-	tbody,
-	th,
-	td,
-	tr {
-	  display: block;
-	}
-  
-	/* Hide table headers (but not display: none;, for accessibility) */
-	thead tr {
-	  position: absolute;
-	  top: -9999px;
-	  left: -9999px;
-	}
-  
-	td {
-	  /* Behave  like a "row" */
-	  border: none;
-	  border-bottom: solid 1px var(--purple4);
-	  position: relative;
-	  padding-left: 50%;
-	}
-  
-	tr {
-	  border: solid 1px var(--purple4);
-	}
-  
-	td:before {
-	  /* Now like a table header */
-	  position: absolute;
-	  /* Top/left values mimic padding */
-	  top: 6px;
-	  left: 6px;
-	  width: 45%;
-	  padding-right: 10px;
-	  white-space: nowrap;
-	}
-  
-	img {
-	  margin: auto;
-	}
-  
-	/*
+@media only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  h1 {
+    text-align: center;
+    margin-left: 0;
+    font-weight: bold;
+    color: var(--purple5);
+  }
+
+  /* change how product cell is shown */
+  .product-name {
+    display: block;
+    padding-left: 0%;
+  }
+
+  .product-image {
+    display: block;
+  }
+
+  /* Force table to not be like tables anymore */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: solid 1px var(--purple4);
+    position: relative;
+    padding-left: 50%;
+  }
+
+  tr {
+    border: solid 1px var(--purple4);
+  }
+
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  img {
+    margin: auto;
+  }
+
+  /*
 	  Label the data
 	  */
-	td:nth-of-type(1):before {
-	  content: "Product";
-	}
-	td:nth-of-type(2):before {
-	  content: "Store";
-	}
-	td:nth-of-type(3):before {
-	  content: "Price";
-	}
-	td:nth-of-type(4):before {
-	  content: "Quantity";
-	}
-	td:nth-of-type(5):before {
-	  content: "Subtotal";
-	}
+  td:nth-of-type(1):before {
+    content: "Product";
   }
+  td:nth-of-type(2):before {
+    content: "Store";
+  }
+  td:nth-of-type(3):before {
+    content: "Price";
+  }
+  td:nth-of-type(4):before {
+    content: "Quantity";
+  }
+  td:nth-of-type(5):before {
+    content: "Subtotal";
+  }
+}
