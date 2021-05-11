@@ -51,7 +51,7 @@ export default class Account extends React.Component {
         }
         this.setState({ billings: billing_addrs[0] });
         this.setState({ shippings: shipping_addrs[0] });
-        if(data.deliveries.length > 0){
+        if (data.deliveries.length > 0) {
           for (var i = 0; i < data.deliveries.length; i++) {
             if (data.deliveries[i].Delivered == true)
               order_nos.push(data.deliveries[i]);
@@ -69,7 +69,7 @@ export default class Account extends React.Component {
           this.setState({deliv_items: delivered_items[0]});*/
 
         //Favorites
-        if(data.favorites){
+        if (data.favorites) {
           for (var i = 0; i < data.favorites.length; i++) {
             item_props.push(data.favorites[i]);
           }
@@ -89,13 +89,13 @@ export default class Account extends React.Component {
   }
 
   render() {
-    if(!this.state.transporting.Delivery_ID){
+    if (!this.state.transporting.Delivery_ID) {
       return (
         <div id="account-page">
           <div id="account-header" class="account-wrapper">
             <div id="name-image">
               <img src={account} class="account-image"></img>
-              <h3 class="account-title">Hello, {this.state.customer.Username}</h3>
+              <h3 class="account-title">Hello, {this.state.customer.Name}</h3>
             </div>
             <div id="logout-button">
               <a href="/home">
@@ -122,26 +122,22 @@ export default class Account extends React.Component {
                 <div class="info-block">
                   <p> {this.state.customer.Username} </p>
                   <p> {this.state.customer.Email} </p>
-                  {this.state.billings &&
+                  {this.state.billings && (
                     <p>
                       {this.state.billings.Street}, {this.state.billings.City},{" "}
-                      {this.state.billings.State}, {this.state.billings.Zip_Code}{" "}
+                      {this.state.billings.State},{" "}
+                      {this.state.billings.Zip_Code}{" "}
                     </p>
-                  }
-                  {
-                    !this.state.billings &&
-                    <p>none on file</p>
-                  }
-                  {this.state.shippings &&
+                  )}
+                  {!this.state.billings && <p>none on file</p>}
+                  {this.state.shippings && (
                     <p>
-                      {this.state.shippings.Street}, {this.state.shippings.City},{" "}
-                      {this.state.shippings.State}, {this.state.shippings.Zip_Code}
+                      {this.state.shippings.Street}, {this.state.shippings.City}
+                      , {this.state.shippings.State},{" "}
+                      {this.state.shippings.Zip_Code}
                     </p>
-                  }
-                  {
-                    !this.state.shippings &&
-                    <p>none on file</p>
-                  }
+                  )}
+                  {!this.state.shippings && <p>none on file</p>}
                 </div>
               </div>
               <div id="favorites" class="account-grid-item">
@@ -152,7 +148,7 @@ export default class Account extends React.Component {
                     <th class="store-column">Store</th>
                     <th class="price-column">Price</th>
                   </tr>
-  
+
                   {this.state.favs.map((favorites) => (
                     <tr>
                       <td>{favorites.Item_Name}</td>
@@ -224,26 +220,21 @@ export default class Account extends React.Component {
               <div class="info-block">
                 <p> {this.state.customer.Username} </p>
                 <p> {this.state.customer.Email} </p>
-                {this.state.billings &&
+                {this.state.billings && (
                   <p>
                     {this.state.billings.Street}, {this.state.billings.City},{" "}
                     {this.state.billings.State}, {this.state.billings.Zip_Code}{" "}
                   </p>
-                }
-                {
-                  !this.state.billings &&
-                  <p>none on file</p>
-                }
-                {this.state.shippings &&
+                )}
+                {!this.state.billings && <p>none on file</p>}
+                {this.state.shippings && (
                   <p>
                     {this.state.shippings.Street}, {this.state.shippings.City},{" "}
-                    {this.state.shippings.State}, {this.state.shippings.Zip_Code}
+                    {this.state.shippings.State},{" "}
+                    {this.state.shippings.Zip_Code}
                   </p>
-                }
-                {
-                  !this.state.shippings &&
-                  <p>none on file</p>
-                }
+                )}
+                {!this.state.shippings && <p>none on file</p>}
               </div>
             </div>
             <div id="favorites" class="account-grid-item">
@@ -265,12 +256,12 @@ export default class Account extends React.Component {
               </table>
             </div>
           </div>
-            <div id="recent-order" class="account-grid-item">
+          <div id="recent-order" class="account-grid-item">
             <CurrentOrder
               transporting={this.state.transporting}
               shippings={this.state.shippings}
             />
-            </div>
+          </div>
         </div>
         <div id="order-history" class="account-grid-item">
           <h3>Order History</h3>
@@ -280,7 +271,6 @@ export default class Account extends React.Component {
               <th>Date</th>
               <th>Total Cost</th>
               <th>Delivery Address</th>
-              <th>Items</th>
             </tr>
             {this.state.delivs.map((deliveries) => (
               <tr>
@@ -291,7 +281,6 @@ export default class Account extends React.Component {
                   {this.state.shippings.Street},{this.state.shippings.City},
                   {this.state.shippings.State},{this.state.shippings.Zip_Code}
                 </td>
-                <td>this.state.deliv_items</td>
               </tr>
             ))}
           </table>
