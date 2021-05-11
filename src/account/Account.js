@@ -33,7 +33,6 @@ export default class Account extends React.Component {
       )
       .then((res) => {
         const data = res.data;
-        const favorite = res.data.favorites.Favorite_Items;
         var billing_addrs = [];
         var shipping_addrs = [];
         var order_nos = [];
@@ -52,13 +51,15 @@ export default class Account extends React.Component {
         }
         this.setState({ billings: billing_addrs[0] });
         this.setState({ shippings: shipping_addrs[0] });
-        for (var i = 0; i < data.deliveries.length; i++) {
-          if (data.deliveries[i].Delivered == true)
-            order_nos.push(data.deliveries[i]);
-          else in_transit.push(data.deliveries[i]);
+        if(data.deliveries.length > 0){
+          for (var i = 0; i < data.deliveries.length; i++) {
+            if (data.deliveries[i].Delivered == true)
+              order_nos.push(data.deliveries[i]);
+            else in_transit.push(data.deliveries[i]);
+          }
+          in_transit.sort((a, b) => (b.Date > a.Date ? 1 : -1));
+          this.setState({ delivs: order_nos, transporting: in_transit[0] });
         }
-        in_transit.sort((a, b) => (b.Date > a.Date ? 1 : -1));
-        this.setState({ delivs: order_nos, transporting: in_transit[0] });
 
         //items that have been delivered
         /*for(var i = 0; i < data.deliveries.Purchased_Items.length; i++){
@@ -68,10 +69,12 @@ export default class Account extends React.Component {
           this.setState({deliv_items: delivered_items[0]});*/
 
         //Favorites
-        for (var i = 0; i < data.favorites.length; i++) {
-          item_props.push(data.favorites[i]);
+        if(data.favorites){
+          for (var i = 0; i < data.favorites.length; i++) {
+            item_props.push(data.favorites[i]);
+          }
+          this.setState({ favs: item_props });
         }
-        this.setState({ favs: item_props });
       })
       .catch(function (error) {
         console.log(error);
@@ -118,14 +121,26 @@ export default class Account extends React.Component {
               <div class="info-block">
                 <p> {this.state.customer.Username} </p>
                 <p> {this.state.customer.Email} </p>
-                <p>
-                  {this.state.billings.Street}, {this.state.billings.City},{" "}
-                  {this.state.billings.State}, {this.state.billings.Zip_Code}{" "}
-                </p>
-                <p>
-                  {this.state.shippings.Street}, {this.state.shippings.City},{" "}
-                  {this.state.shippings.State}, {this.state.shippings.Zip_Code}
-                </p>
+                {this.state.billings &&
+                  <p>
+                    {this.state.billings.Street}, {this.state.billings.City},{" "}
+                    {this.state.billings.State}, {this.state.billings.Zip_Code}{" "}
+                  </p>
+                }
+                {
+                  !this.state.billings &&
+                  <p>none on file</p>
+                }
+                {this.state.shippings &&
+                  <p>
+                    {this.state.shippings.Street}, {this.state.shippings.City},{" "}
+                    {this.state.shippings.State}, {this.state.shippings.Zip_Code}
+                  </p>
+                }
+                {
+                  !this.state.shippings &&
+                  <p>none on file</p>
+                }
               </div>
             </div>
             <div id="favorites" class="account-grid-item">
@@ -147,12 +162,14 @@ export default class Account extends React.Component {
               </table>
             </div>
           </div>
-          <div id="recent-order" class="account-grid-item">
-           <CurrentOrder
+          {this.state.transporting.length > 0 &&
+            <div id="recent-order" class="account-grid-item">
+            <CurrentOrder
               transporting={this.state.transporting}
               shippings={this.state.shippings}
             />
-          </div>
+            </div>
+          }
         </div>
         <div id="order-history" class="account-grid-item">
           <h3>Order History</h3>
