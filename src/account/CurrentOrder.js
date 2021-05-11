@@ -52,7 +52,7 @@ export default class CurrentOrder extends React.Component {
     console.log(deliveryTime);
     console.log(this.state.deliveryTime);
 
-    this.componentDidUpdate = this.componentDidUpdate.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   incrementTime() {
@@ -83,8 +83,7 @@ export default class CurrentOrder extends React.Component {
     return status;
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.transporting !== this.props.transporting) {
+  componentDidMount() {
       console.log("props updated");
       this.state.Delivery_ID = this.props.transporting.Delivery_ID;
       console.log(this.state.Delivery_ID);
@@ -104,7 +103,6 @@ export default class CurrentOrder extends React.Component {
           Purchased_Items: res.data.Purchased_Items,
         });
       });
-    }
   }
 
   render() {
